@@ -1,15 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
-}
+import Base from './features/base/Base';
+
+import './App.css';
+import '@rmwc/top-app-bar/styles';
+
+const App: React.FunctionComponent<{}> = props => {
+  return <Base />;
+};
 
 export default App;

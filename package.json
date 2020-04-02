@@ -4,6 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rmwc/card": "^6.0.5",
+    "@rmwc/chip": "^6.0.5",
+    "@rmwc/grid": "^6.0.5",
+    "@rmwc/image-list": "^6.0.5",
+    "@rmwc/list": "^6.0.5",
+    "@rmwc/top-app-bar": "^6.0.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
