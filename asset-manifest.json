@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/token-editor/static/css/main.144c8b47.chunk.css",
+    "main.js": "/token-editor/static/js/main.0754a197.chunk.js",
+    "main.js.map": "/token-editor/static/js/main.0754a197.chunk.js.map",
+    "runtime-main.js": "/token-editor/static/js/runtime-main.f9256278.js",
+    "runtime-main.js.map": "/token-editor/static/js/runtime-main.f9256278.js.map",
+    "static/css/2.14921843.chunk.css": "/token-editor/static/css/2.14921843.chunk.css",
+    "static/js/2.42dfe7d6.chunk.js": "/token-editor/static/js/2.42dfe7d6.chunk.js",
+    "static/js/2.42dfe7d6.chunk.js.map": "/token-editor/static/js/2.42dfe7d6.chunk.js.map",
+    "index.html": "/token-editor/index.html",
+    "precache-manifest.c7738e3dd40a2baa5d8ec01cab4ff416.js": "/token-editor/precache-manifest.c7738e3dd40a2baa5d8ec01cab4ff416.js",
+    "service-worker.js": "/token-editor/service-worker.js",
+    "static/css/2.14921843.chunk.css.map": "/token-editor/static/css/2.14921843.chunk.css.map",
+    "static/css/main.144c8b47.chunk.css.map": "/token-editor/static/css/main.144c8b47.chunk.css.map",
+    "static/js/2.42dfe7d6.chunk.js.LICENSE.txt": "/token-editor/static/js/2.42dfe7d6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f9256278.js",
+    "static/css/2.14921843.chunk.css",
+    "static/js/2.42dfe7d6.chunk.js",
+    "static/css/main.144c8b47.chunk.css",
+    "static/js/main.0754a197.chunk.js"
+  ]
+}
