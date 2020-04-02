@@ -7,6 +7,8 @@ import {
   TopAppBarTitle
 } from '@rmwc/top-app-bar';
 
+import '@rmwc/top-app-bar/styles';
+
 interface Props {
   children?: any
 }

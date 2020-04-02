@@ -1505,6 +1505,16 @@
   resolved "https://registry.yarnpkg.com/@rmwc/types/-/types-6.0.5.tgz#2b388d9a1512f06b43d78a1c364299c663e01061"
   integrity sha512-G4NZxakwsTMFxxpEWX90MOlZtVNzCwooLUg7FH7Oh5OJCnKWGmXK8ZMF59vvIEn7zCiEpVroKhOxNpMw9TIUTw==
 
+"@rmwc/typography@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@rmwc/typography/-/typography-6.0.5.tgz#aea3f770957fe08af738cd6ed5479d282e6fa5e0"
+  integrity sha512-t7VizbL8zqDVfXo7Y6EnOQSiDUQMRQScuD/7xXXYJKuWpGxx9G2CpR4tTgEPoSK3B9hn2uWosqZ4PLnRdJMDFg==
+  dependencies:
+    "@material/typography" "^5.1.0"
+    "@rmwc/base" "^6.0.5"
+    "@rmwc/provider" "^6.0.5"
+    "@rmwc/types" "^6.0.5"
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"
