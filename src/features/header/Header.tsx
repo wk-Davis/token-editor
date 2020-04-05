@@ -4,18 +4,14 @@ import {
   TopAppBarFixedAdjust,
   TopAppBarRow,
   TopAppBarSection,
-  TopAppBarTitle
+  TopAppBarTitle,
 } from '@rmwc/top-app-bar';
 
 import '@rmwc/top-app-bar/styles';
 
-interface Props {
-  children?: any
-}
-
-const Base: React.FunctionComponent<Props> = props => {
+const Header: React.FunctionComponent<{}> = () => {
   return (
-    <div>
+    <>
       <TopAppBar>
         <TopAppBarRow>
           <TopAppBarSection>
@@ -24,9 +20,8 @@ const Base: React.FunctionComponent<Props> = props => {
         </TopAppBarRow>
       </TopAppBar>
       <TopAppBarFixedAdjust />
-      <div>{props.children}</div>
-    </div>
+    </>
   );
 };
 
-export default Base;
+export default Header;

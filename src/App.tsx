@@ -1,16 +1,17 @@
 import React from 'react';
 
-import Base from './features/base/Base';
+import Header from './features/header/Header';
 import TokenGrid from './features/tokenGrid/TokenGrid';
 
 import './App.css';
 import '@rmwc/typography/styles';
 
-const App: React.FunctionComponent<{}> = props => {
+const App: React.FunctionComponent<{}> = () => {
   return (
-    <Base>
+    <>
+      <Header />
       <TokenGrid />
-    </Base>
+    </>
   );
 };
 
