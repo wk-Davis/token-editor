@@ -4,24 +4,30 @@ import {
   ImageListImage,
   ImageListItem,
   ImageListLabel,
-  ImageListSupporting
+  ImageListSupporting,
 } from '@rmwc/image-list';
 import { Typography } from '@rmwc/typography';
 
-import { refs } from '../../assets';
-import '@rmwc/image-list/styles';
-import './TokenGrid.css';
+import config from '../../assets';
+import envvars from '../../envvars';
 
-const TokenGrid: React.FunctionComponent<{}> = props => {
+import './TokenGrid.css';
+import '@rmwc/image-list/styles';
+
+const TokenGrid: React.FunctionComponent<{}> = (props) => {
+  const tokenNames: string[] = Object.keys(config);
   return (
     <>
       <Typography use='subtitle1'>Select a token:</Typography>
       <ImageList withTextProtection>
-        {refs.map(({ src, ref }) => {
+        {tokenNames.map((ref: string) => {
           const isAvailable: boolean = ref === 'cleric';
           return (
             <ImageListItem className={isAvailable ? '' : 'no-hover'} key={ref}>
-              <ImageListImage src={src} alt={`${ref} token`} />
+              <ImageListImage
+                src={config[ref][envvars.REACT_APP_BASE]?.src}
+                alt={`${ref} token`}
+              />
               {!isAvailable && (
                 <ImageListSupporting>
                   <ImageListLabel>Available Soon!</ImageListLabel>

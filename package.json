@@ -26,10 +26,10 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "ts-node tokenIndexBuilder.ts && npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "ts-node tokenIndexBuilder.ts && react-scripts start",
+    "build": "ts-node tokenIndexBuilder.ts && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
