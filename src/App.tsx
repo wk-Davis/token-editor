@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Dispatch } from 'react';
 
 import Header from './features/header/Header';
 import TokenGrid from './features/tokenGrid/TokenGrid';
@@ -8,11 +8,18 @@ import '@rmwc/typography/styles';
 import Editor from './features/editor/Editor';
 
 const App: React.FunctionComponent<{}> = () => {
+  const [selectedToken, setSelectedToken]: [
+    string | null,
+    Dispatch<any>
+  ] = useState(null);
+
   return (
     <>
-      <Header />
-      <TokenGrid />
-      <Editor />
+      <Header
+        showBack={!!selectedToken}
+        unsetToken={() => setSelectedToken(null)}
+      />
+      {selectedToken ? <Editor /> : <TokenGrid setToken={setSelectedToken} />}
     </>
   );
 };

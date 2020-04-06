@@ -8,8 +8,27 @@
   text-align: center;
 }
 
+.flipx {
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+
+  filter: FlipH;
+  -ms-filter: 'FlipH';
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .no-hover:hover {
   background-color: initial;
   border-color: rgba(0, 0, 0, 0);
   border-style: solid;
+}
+
+.white {
+  filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(160deg)
+    brightness(105%) contrast(105%);
 }
