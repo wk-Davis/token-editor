@@ -1,14 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Menu from './Menu';
+import Editor from './Editor';
 import config from '../../assets';
 import envvars from '../../envvars';
 
 test('renders a list with all token components', () => {
-  const { getByText } = render(
-    <Menu state={config.cleric} dispatch={() => {}} />
-  );
+  const { getByText } = render(<Editor token='cleric' />);
   Object.keys(config.cleric).forEach((name) => {
     const delimiterIndex = name.indexOf(envvars.REACT_APP_DELIMITER ?? '_');
     const listName = getByText(

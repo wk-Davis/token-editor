@@ -1,16 +1,10 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
 import '@rmwc/list/styles';
 
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
-
-const delimiter: string = process.env.REACT_APP_DELIMITER ?? '_';
-
-interface Config {
-  [propName: string]: string;
-  lineart: string;
-}
+import envvars from '../../envvars';
 
 const GroupHandle: React.FunctionComponent<{ title: string }> = ({
   title,
@@ -22,23 +16,26 @@ const GroupHandle: React.FunctionComponent<{ title: string }> = ({
   </ListItem>
 );
 
-const Menu: React.FunctionComponent<{}> = () => {
-  const config: Config = {
-    hair: '888004',
-    skin: '#fff',
-    clothes_bottom: '#eeefff',
-    clothes_top: '#eeefff',
-    shoes_body: 'eeefff',
-    shoes_tongue: '345ffa',
-    lineart: '#000000',
+interface Props {
+  state: {
+    [name: string]: {
+      color: string;
+      src: string;
+    };
   };
-  const keys: string[] = Object.keys(config).sort();
+  dispatch: Dispatch<any>;
+}
+
+const Menu: React.FunctionComponent<Props> = ({ state, dispatch }) => {
+  const keys: string[] = Object.keys(state).sort();
 
   let prevGroup: string;
   return (
     <List>
       {keys.reduce((comps: Array<React.ReactNode>, name) => {
-        const delimiterIndex: number = name.indexOf(delimiter);
+        const delimiterIndex: number = name.indexOf(
+          envvars.REACT_APP_DELIMITER
+        );
         if (delimiterIndex >= 0) {
           const groupName = name.substring(0, delimiterIndex);
           if (groupName === prevGroup) return comps;
@@ -56,7 +53,7 @@ const Menu: React.FunctionComponent<{}> = () => {
                 const subName = key.substring(groupName.length + 1);
                 return (
                   <ListItem key={key}>
-                    {subName} {config[key]}
+                    {subName} {state[key].color}
                   </ListItem>
                 );
               })}
@@ -65,7 +62,7 @@ const Menu: React.FunctionComponent<{}> = () => {
         } else {
           comps.push(
             <ListItem key={name}>
-              {name} {config[name]}
+              {name} {state[name].color}
             </ListItem>
           );
         }

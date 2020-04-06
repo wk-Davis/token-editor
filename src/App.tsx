@@ -3,9 +3,10 @@ import React, { useState, Dispatch } from 'react';
 import Header from './features/header/Header';
 import TokenGrid from './features/tokenGrid/TokenGrid';
 
+import Editor from './features/editor/Editor';
+
 import './App.css';
 import '@rmwc/typography/styles';
-import Editor from './features/editor/Editor';
 
 const App: React.FunctionComponent<{}> = () => {
   const [selectedToken, setSelectedToken]: [
@@ -19,7 +20,11 @@ const App: React.FunctionComponent<{}> = () => {
         showBack={!!selectedToken}
         unsetToken={() => setSelectedToken(null)}
       />
-      {selectedToken ? <Editor /> : <TokenGrid setToken={setSelectedToken} />}
+      {selectedToken ? (
+        <Editor token={selectedToken} />
+      ) : (
+        <TokenGrid setToken={setSelectedToken} />
+      )}
     </>
   );
 };
