@@ -1,7 +1,11 @@
 import React, { Dispatch, useReducer } from 'react';
+import { Grid, GridCell } from '@rmwc/grid';
 
+import Canvas from './Canvas';
 import Menu from './Menu';
 import config from '../../assets';
+
+import '@rmwc/grid/styles';
 
 interface Action {
   type: string;
@@ -35,11 +39,16 @@ const Editor: React.FunctionComponent<Props> = ({ token }) => {
     initialState
   );
   if (!token) return null;
+  const sizeAttr = { desktop: 6, tablet: 4, phone: 4 };
   return (
-    <div>
-      {/* Canvas */}
-      <Menu dispatch={dispatch} state={state} />
-    </div>
+    <Grid>
+      <GridCell className='center' {...sizeAttr}>
+        <Canvas />
+      </GridCell>
+      <GridCell {...sizeAttr}>
+        <Menu dispatch={dispatch} state={state} />
+      </GridCell>
+    </Grid>
   );
 };
 

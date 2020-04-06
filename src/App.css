@@ -22,6 +22,10 @@
   visibility: hidden;
 }
 
+.mdc-layout-grid__cell.center {
+  text-align: center;
+}
+
 .no-hover:hover {
   background-color: initial;
   border-color: rgba(0, 0, 0, 0);
