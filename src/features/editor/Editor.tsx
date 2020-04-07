@@ -1,6 +1,7 @@
 import React, { Context, Dispatch, createContext, useReducer } from 'react';
 
 import Canvas from '../canvas/Canvas';
+import EditorHeader from './EditorHeader';
 import Menu from '../menu/Menu';
 import config from '../../assets';
 
@@ -20,7 +21,10 @@ interface State {
 
 export const EditorDispatch: Context<any> = createContext(null);
 
-const Editor: React.FunctionComponent<{ token: string }> = ({ token }) => {
+const Editor: React.FunctionComponent<{
+  token: string;
+  unsetToken: () => void;
+}> = ({ token, unsetToken }) => {
   const initialState: State = Object.assign({}, config[token]);
   const reducer = (state: State, action: Action): State => {
     return {
@@ -38,6 +42,7 @@ const Editor: React.FunctionComponent<{ token: string }> = ({ token }) => {
   if (!token) return null;
   return (
     <EditorDispatch.Provider value={dispatch}>
+      <EditorHeader unsetToken={unsetToken} />
       <div className='editor'>
         <div className='col-1'>
           <Canvas state={state} />

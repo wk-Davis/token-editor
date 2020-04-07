@@ -1,10 +1,10 @@
 import React, { useState, Dispatch } from 'react';
 
-import Header from './features/header/Header';
-import TokenGrid from './features/tokenGrid/TokenGrid';
+import TokenGrid from './features/grid/Grid';
 import Editor from './features/editor/Editor';
 
 import './App.css';
+import '@rmwc/top-app-bar/styles';
 import '@rmwc/typography/styles';
 
 const App: React.FunctionComponent<{}> = () => {
@@ -13,18 +13,15 @@ const App: React.FunctionComponent<{}> = () => {
     Dispatch<any>
   ] = useState(null);
 
-  return (
-    <>
-      <Header
-        showBack={!!selectedToken}
-        unsetToken={() => setSelectedToken(null)}
-      />
-        {selectedToken ? (
-          <Editor token={selectedToken} />
-        ) : (
-          <TokenGrid setToken={setSelectedToken} />
-        )}
-    </>
+  return selectedToken ? (
+    <Editor
+      token={selectedToken}
+      unsetToken={() => {
+        setSelectedToken(null);
+      }}
+    />
+  ) : (
+    <TokenGrid setToken={setSelectedToken} />
   );
 };
 

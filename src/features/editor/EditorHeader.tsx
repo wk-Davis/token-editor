@@ -1,21 +1,18 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import {
   TopAppBar,
   TopAppBarFixedAdjust,
-  TopAppBarNavigationIcon,
   TopAppBarRow,
   TopAppBarSection,
   TopAppBarTitle,
+  TopAppBarNavigationIcon,
 } from '@rmwc/top-app-bar';
 
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
 
-import '@rmwc/top-app-bar/styles';
-
-const Header: React.FunctionComponent<{
-  showBack: boolean;
-  unsetToken: Dispatch<any>;
-}> = ({ showBack, unsetToken }) => {
+const EditorHeader: React.FunctionComponent<{
+  unsetToken: () => void;
+}> = ({ unsetToken }) => {
   return (
     <>
       <TopAppBar>
@@ -23,7 +20,7 @@ const Header: React.FunctionComponent<{
           <TopAppBarSection>
             <TopAppBarNavigationIcon
               icon={chevron_right}
-              className={`flipx white ${showBack ? '' : 'hidden'}`}
+              className={`flipx white`}
               onClick={unsetToken}
             />
             <TopAppBarTitle>Token Editor</TopAppBarTitle>
@@ -35,4 +32,4 @@ const Header: React.FunctionComponent<{
   );
 };
 
-export default Header;
+export default EditorHeader;
