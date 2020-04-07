@@ -2,7 +2,6 @@ import React, { useState, Dispatch } from 'react';
 
 import Header from './features/header/Header';
 import TokenGrid from './features/tokenGrid/TokenGrid';
-
 import Editor from './features/editor/Editor';
 
 import './App.css';
@@ -20,11 +19,11 @@ const App: React.FunctionComponent<{}> = () => {
         showBack={!!selectedToken}
         unsetToken={() => setSelectedToken(null)}
       />
-      {selectedToken ? (
-        <Editor token={selectedToken} />
-      ) : (
-        <TokenGrid setToken={setSelectedToken} />
-      )}
+        {selectedToken ? (
+          <Editor token={selectedToken} />
+        ) : (
+          <TokenGrid setToken={setSelectedToken} />
+        )}
     </>
   );
 };

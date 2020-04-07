@@ -1167,33 +1167,6 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/button/-/button-5.1.0.tgz#22986368ce12faad142ba01c4aeb42f6a380dffb"
-  integrity sha512-umeuIEbeRRd0cY+5axhrBoM0dvJ4YfoTsUbKgz4ctFxHLBsgthFUIXSa3Ot15s284UP6kjslK0LCMqzhirZxeQ==
-  dependencies:
-    "@material/density" "^5.1.0"
-    "@material/elevation" "^5.1.0"
-    "@material/feature-targeting" "^5.1.0"
-    "@material/ripple" "^5.1.0"
-    "@material/rtl" "^5.1.0"
-    "@material/shape" "^5.1.0"
-    "@material/theme" "^5.1.0"
-    "@material/touch-target" "^5.1.0"
-    "@material/typography" "^5.1.0"
-
-"@material/card@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/card/-/card-5.1.0.tgz#db3e0b52b09e832cb39f81e9384b792e33c24104"
-  integrity sha512-/syao6oR/PAvzs04quybeCWHZVn4W2dNnxIOWIJTRQced0/o3gYrHgQSX+edC+6pEnSr3Drwbo2cye7nRdbixA==
-  dependencies:
-    "@material/elevation" "^5.1.0"
-    "@material/feature-targeting" "^5.1.0"
-    "@material/ripple" "^5.1.0"
-    "@material/rtl" "^5.1.0"
-    "@material/shape" "^5.1.0"
-    "@material/theme" "^5.1.0"
-
 "@material/checkbox@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-5.1.0.tgz#2f689f6a409f0ed906a0d73bcd0078a768eaf9d1"
@@ -1277,11 +1250,6 @@
     "@material/shape" "^5.1.0"
     "@material/theme" "^5.1.0"
     "@material/typography" "^5.1.0"
-
-"@material/layout-grid@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/layout-grid/-/layout-grid-5.1.0.tgz#a1f584bfdd3a1f11db37aa63c512b4c3c1dbfee9"
-  integrity sha512-6TvPVZE+UGVfmzttbRp0K6SOUvFmYI5W8p966Vztg8dYK122ondRJqMmyFf0SS0CdbrbO+bSW7/S3YkpPNrvAg==
 
 "@material/list@^5.1.0":
   version "5.1.0"
@@ -1386,30 +1354,6 @@
     mutation-observer "^1.0.3"
     tslib "^1.10.0"
 
-"@rmwc/button@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@rmwc/button/-/button-6.0.5.tgz#2f15194f92a5d1d9ed1ba05eb647ea06064ce77b"
-  integrity sha512-SG4+G6G9L0iqLP6M4EJwAY+/wUrJ/agqAjmDJrMNt1FnBUMRONSoxCbZhKjm/Z6pla5OSCGi17OlZCf20Oky8A==
-  dependencies:
-    "@material/button" "^5.1.0"
-    "@rmwc/base" "^6.0.5"
-    "@rmwc/icon" "^6.0.5"
-    "@rmwc/provider" "^6.0.5"
-    "@rmwc/ripple" "^6.0.5"
-    "@rmwc/types" "^6.0.5"
-
-"@rmwc/card@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@rmwc/card/-/card-6.0.5.tgz#6de8dda45d2db2f3130618b4fe1abb1e4a1883ec"
-  integrity sha512-Z/MpqT7dYdycedsAmLKZdV/zT3FMj4RP0+0GznW7FaKaThXJDxHtnmUnRYJ8S5PSZKHatya29MgyewxirYufxw==
-  dependencies:
-    "@material/card" "^5.1.0"
-    "@rmwc/base" "^6.0.5"
-    "@rmwc/button" "^6.0.5"
-    "@rmwc/icon-button" "^6.0.5"
-    "@rmwc/ripple" "^6.0.5"
-    "@rmwc/types" "^6.0.5"
-
 "@rmwc/chip@^6.0.5":
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@rmwc/chip/-/chip-6.0.5.tgz#939f0b18bd2ab680ecaebfa83d65e38ff8252c63"
@@ -1419,15 +1363,6 @@
     "@rmwc/base" "^6.0.5"
     "@rmwc/icon" "^6.0.5"
     "@rmwc/ripple" "^6.0.5"
-    "@rmwc/types" "^6.0.5"
-
-"@rmwc/grid@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@rmwc/grid/-/grid-6.0.5.tgz#044c8e96aa3de1aa9a2f29e67f7862c6db0d5296"
-  integrity sha512-CbUD+68/ROsLqylG0yV7oM2em4F44ON8sUpYAv74eobSXnV3WHFzxal7tWq+RcKlDMVVl4qEGMuu6vB1+Y9/FQ==
-  dependencies:
-    "@material/layout-grid" "^5.1.0"
-    "@rmwc/base" "^6.0.5"
     "@rmwc/types" "^6.0.5"
 
 "@rmwc/icon-button@^6.0.5":

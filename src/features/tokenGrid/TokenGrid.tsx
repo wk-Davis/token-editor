@@ -19,8 +19,10 @@ const TokenGrid: React.FunctionComponent<{
 }> = ({ setToken }) => {
   const tokenNames: string[] = Object.keys(config);
   return (
-    <>
-      <Typography use='subtitle1'>Select a token:</Typography>
+    <div className='token-grid'>
+      <Typography className='text-center' tag='p' use='subtitle1'>
+        Select a token:
+      </Typography>
       <ImageList withTextProtection>
         {tokenNames.map((ref: string) => {
           const isAvailable: boolean = ref === 'cleric';
@@ -43,7 +45,7 @@ const TokenGrid: React.FunctionComponent<{
           );
         })}
       </ImageList>
-    </>
+    </div>
   );
 };
 

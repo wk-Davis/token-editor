@@ -1,3 +1,10 @@
+.token-grid {
+  display: flex;
+  flex-direction: column;
+}
+.mdc-image-list{
+  justify-content: center;
+}
 .mdc-image-list__item {
   border: 1px;
   border-style: solid;
@@ -5,7 +12,6 @@
   border-radius: 4px;
   margin: 5px;
 }
-
 .mdc-image-list__item:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);

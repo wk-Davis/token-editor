@@ -1,0 +1,26 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+}
+.col-1 {
+  background-color: #ffffff;
+  z-index: 1;
+  display: flex;
+  position: sticky;
+  flex-direction: column;
+  top: 1px;
+}
+@media only screen and (min-width: 600px) {
+  .editor {
+    flex-direction: initial;
+  }
+  .col-1 {
+    flex-direction: column;
+    display: inline-block;
+    width: 50%;
+  }
+  .col-2 {
+    display: inline-block;
+    width: 50%;
+  }
+}

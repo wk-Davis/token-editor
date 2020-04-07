@@ -5,9 +5,7 @@
   "homepage": "https://wk-davis.github.io/token-editor/",
   "private": true,
   "dependencies": {
-    "@rmwc/card": "^6.0.5",
     "@rmwc/chip": "^6.0.5",
-    "@rmwc/grid": "^6.0.5",
     "@rmwc/image-list": "^6.0.5",
     "@rmwc/list": "^6.0.5",
     "@rmwc/top-app-bar": "^6.0.5",
