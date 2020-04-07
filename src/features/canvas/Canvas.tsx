@@ -16,7 +16,7 @@ interface Props {
 const Canvas: React.FunctionComponent<Props> = ({ state }) => {
   const canvasRef: MutableRefObject<HTMLCanvasElement | null> = useRef(null);
   const canvas: MutableRefObject<any | null> = useRef(null);
-  
+
   useEffect(() => {
     const canvasOpts = { backgroundColor: 'lightgrey' };
     if (!canvas.current)
@@ -31,6 +31,13 @@ const Canvas: React.FunctionComponent<Props> = ({ state }) => {
       fabric.Image.fromURL(
         state[key].src,
         (img: fabric.Image) => {
+          const filter = new fabric.Image.filters.BlendColor({
+            color: state[key].color,
+            mode: 'tint',
+            alpha: 1,
+          });
+          if (Array.isArray(img.filters)) img.filters.push(filter);
+          img.applyFilters();
           canvas.current.add(img);
           if (img.name === envvars.REACT_APP_BASE)
             canvas.current.bringToFront(img);
@@ -39,6 +46,9 @@ const Canvas: React.FunctionComponent<Props> = ({ state }) => {
         { name: key }
       );
     });
+    return function clear() {
+      canvas.current.clear();
+    };
   }, [state]);
 
   return <canvas height={200} ref={canvasRef} width={200}></canvas>;

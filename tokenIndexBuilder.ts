@@ -9,6 +9,7 @@ const path = require('path');
   const TOKEN_PATH = path.resolve(
     process.env.REACT_APP_TOKEN_PATH || 'src/assets/tokens'
   );
+  const BASE_NAME = process.env.REACT_APP_BASE || 'lineart';
   interface Config {
     [tokenName: string]: {
       [filename: string]: string;
@@ -35,7 +36,10 @@ const path = require('path');
         files.forEach((fileName: string) => {
           const name = fileName.substring(0, fileName.lastIndexOf('.'));
           const importName = `${dirName}_${name}`;
-          configs[dirName][name] = `{ color: '#', src: ${importName} }`;
+          configs[dirName][name] =
+            name === BASE_NAME
+              ? `{ color: '#000000', src: ${importName} }`
+              : `{ color: '#fff', src: ${importName} }`;
           imports.push(
             `import ${importName} from './${TOKEN_PATH.substring(
               CONFIG_PATH.length + 1
@@ -49,7 +53,7 @@ const path = require('path');
     \n${configInterface}  
     \nconst config: Config = ${configString.replace(/"/g, '')};
     \nexport default config;`;
-    
+
     await fs.unlink(`${CONFIG_PATH}/index.ts`).catch((err: Error) => {});
     await fs.writeFile(`${CONFIG_PATH}/index.ts`, fileString);
   } catch (error) {
