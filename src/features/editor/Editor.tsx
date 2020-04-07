@@ -43,7 +43,7 @@ const Editor: React.FunctionComponent<Props> = ({ token }) => {
   return (
     <Grid>
       <GridCell className='center' {...sizeAttr}>
-        <Canvas />
+        <Canvas state={state} />
       </GridCell>
       <GridCell {...sizeAttr}>
         <Menu dispatch={dispatch} state={state} />
