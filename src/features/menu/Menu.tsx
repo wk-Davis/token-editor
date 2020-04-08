@@ -1,16 +1,17 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
 import '@rmwc/list/styles';
 
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
 import envvars from '../../envvars';
+import InputChip from './InputChip';
 
 const GroupHandle: React.FunctionComponent<{ title: string }> = ({
   title,
   ...props
 }) => (
-  <ListItem {...props}>
+  <ListItem ripple={false} {...props}>
     {title}
     <ListItemMeta icon={chevron_right} />
   </ListItem>
@@ -23,15 +24,14 @@ interface Props {
       src: string;
     };
   };
-  dispatch: Dispatch<any>;
 }
 
-const Menu: React.FunctionComponent<Props> = ({ state, dispatch }) => {
+const Menu: React.FunctionComponent<Props> = ({ state }) => {
   const keys: string[] = Object.keys(state).sort();
 
   let prevGroup: string;
   return (
-    <List>
+    <List nonInteractive>
       {keys.reduce((comps: Array<React.ReactNode>, name) => {
         const delimiterIndex: number = name.indexOf(
           envvars.REACT_APP_DELIMITER
@@ -52,8 +52,11 @@ const Menu: React.FunctionComponent<Props> = ({ state, dispatch }) => {
               {groupKeys.map((key) => {
                 const subName = key.substring(groupName.length + 1);
                 return (
-                  <ListItem key={key}>
-                    {subName} {state[key].color}
+                  <ListItem ripple={false} key={key}>
+                    {subName}
+                    <ListItemMeta>
+                      <InputChip name={key} stateValue={state[key].color} />
+                    </ListItemMeta>
                   </ListItem>
                 );
               })}
@@ -61,8 +64,11 @@ const Menu: React.FunctionComponent<Props> = ({ state, dispatch }) => {
           );
         } else {
           comps.push(
-            <ListItem key={name}>
-              {name} {state[name].color}
+            <ListItem ripple={false} key={name}>
+              {name}
+              <ListItemMeta>
+                <InputChip name={name} stateValue={state[name].color} />
+              </ListItemMeta>
             </ListItem>
           );
         }

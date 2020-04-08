@@ -1167,41 +1167,6 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/checkbox@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-5.1.0.tgz#2f689f6a409f0ed906a0d73bcd0078a768eaf9d1"
-  integrity sha512-NwpWxFdWrZNlSjcSEEcGz8UN7ZQ5k8VthExclJnawpYGPUnCPLTXWogREnA2Tyl22PJ6jOy8Ejb8tnpu2rSiaw==
-  dependencies:
-    "@material/animation" "^5.1.0"
-    "@material/base" "^5.1.0"
-    "@material/density" "^5.1.0"
-    "@material/dom" "^5.1.0"
-    "@material/feature-targeting" "^5.1.0"
-    "@material/ripple" "^5.1.0"
-    "@material/theme" "^5.1.0"
-    "@material/touch-target" "^5.1.0"
-    tslib "^1.9.3"
-
-"@material/chips@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/chips/-/chips-5.1.0.tgz#8bbd5b2be3300a9453cf6edd9186a7c0aa757ace"
-  integrity sha512-eYWrobENtXbnGoEx5BEURqoCfoc9aHu1JWq64mF12a/JSk+c035KYMjD4oyhow7dYqobbfQlWWdLQeHoRpYCeA==
-  dependencies:
-    "@material/animation" "^5.1.0"
-    "@material/base" "^5.1.0"
-    "@material/checkbox" "^5.1.0"
-    "@material/density" "^5.1.0"
-    "@material/dom" "^5.1.0"
-    "@material/elevation" "^5.1.0"
-    "@material/feature-targeting" "^5.1.0"
-    "@material/ripple" "^5.1.0"
-    "@material/rtl" "^5.1.0"
-    "@material/shape" "^5.1.0"
-    "@material/theme" "^5.1.0"
-    "@material/touch-target" "^5.1.0"
-    "@material/typography" "^5.1.0"
-    tslib "^1.9.3"
-
 "@material/density@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@material/density/-/density-5.1.0.tgz#d36512d413a00595122f98303766dae6b9e9fabe"
@@ -1314,14 +1279,6 @@
     "@material/typography" "^5.1.0"
     tslib "^1.9.3"
 
-"@material/touch-target@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@material/touch-target/-/touch-target-5.1.0.tgz#0e03ba901acf118c91eb4cfa02034964424565a2"
-  integrity sha512-lR3eoL1D0I/hyEK6I7bMFDBy/pE0yYvjYUZtL1vC7+2i54A4FgQ2hwnpQJVaZQXzrHdj6xsXmODphmUsH5gqPA==
-  dependencies:
-    "@material/base" "^5.1.0"
-    "@material/feature-targeting" "^5.1.0"
-
 "@material/typography@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-5.1.0.tgz#b346f4139b231f17c84c439a1c7af311c40c5844"
@@ -1353,17 +1310,6 @@
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
     tslib "^1.10.0"
-
-"@rmwc/chip@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@rmwc/chip/-/chip-6.0.5.tgz#939f0b18bd2ab680ecaebfa83d65e38ff8252c63"
-  integrity sha512-812L1GiAix79lSVJj4HJx1XMAskhs0R+xyv7NpScqtX1bPRCzaoj5YkLinOhN9SihDlezwnOzROxfzLcdyrP9A==
-  dependencies:
-    "@material/chips" "^5.1.0"
-    "@rmwc/base" "^6.0.5"
-    "@rmwc/icon" "^6.0.5"
-    "@rmwc/ripple" "^6.0.5"
-    "@rmwc/types" "^6.0.5"
 
 "@rmwc/icon-button@^6.0.5":
   version "6.0.5"
@@ -1681,6 +1627,21 @@
   dependencies:
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
+
+"@types/jest-expect-message@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/jest-expect-message/-/jest-expect-message-1.0.1.tgz#a1c5d18fa32be141b06d60f54a66b23da68e6cd5"
+  integrity sha512-6WK4iQ/iVW4otNDNJEvCnIJ3keGeYtS04t4S/lA0ftF8hdHJnjY9rZrgHCz+LPsudd1DdwmGT5i6j4J5xU1S9A==
+  dependencies:
+    "@types/jest" "*"
+
+"@types/jest@*":
+  version "25.2.1"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-25.2.1.tgz#9544cd438607955381c1bdbdb97767a249297db5"
+  integrity sha512-msra1bCaAeEdkSyA0CZ6gW1ukMIvZ5YoJkdXw/qhQdsuuDlFTcEUrUw8CLCPt2rVRUfXlClVvK2gvPs9IokZaA==
+  dependencies:
+    jest-diff "^25.2.1"
+    pretty-format "^25.2.1"
 
 "@types/jest@^24.0.0":
   version "24.9.1"
@@ -3892,6 +3853,11 @@ diff-sequences@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-24.9.0.tgz#5715d6244e2aa65f48bba0bc972db0b0b11e95b5"
   integrity sha512-Dj6Wk3tWyTE+Fo1rW8v0Xhwk80um6yFYKbuAxc9c3EZxIHFDYwbi34Uk42u1CdnIiVorvt4RmlSDjIPyzGC2ew==
+
+diff-sequences@^25.2.6:
+  version "25.2.6"
+  resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-25.2.6.tgz#5f467c00edd35352b7bca46d7927d60e687a76dd"
+  integrity sha512-Hq8o7+6GaZeoFjtpgvRBUknSXNeJiCx7V9Fr94ZMljNiCr9n9L8H8aJqgWOQiDDGdyn29fRNcDdRVJ5fdyihfg==
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
@@ -6132,6 +6098,16 @@ jest-diff@^24.0.0, jest-diff@^24.3.0, jest-diff@^24.9.0:
     jest-get-type "^24.9.0"
     pretty-format "^24.9.0"
 
+jest-diff@^25.2.1:
+  version "25.2.6"
+  resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-25.2.6.tgz#a6d70a9ab74507715ea1092ac513d1ab81c1b5e7"
+  integrity sha512-KuadXImtRghTFga+/adnNrv9s61HudRMR7gVSbP35UKZdn4IK2/0N0PpGZIqtmllK9aUyye54I3nu28OYSnqOg==
+  dependencies:
+    chalk "^3.0.0"
+    diff-sequences "^25.2.6"
+    jest-get-type "^25.2.6"
+    pretty-format "^25.2.6"
+
 jest-docblock@^24.3.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-24.9.0.tgz#7970201802ba560e1c4092cc25cbedf5af5a8ce2"
@@ -6185,10 +6161,20 @@ jest-environment-node@^24.9.0:
     jest-mock "^24.9.0"
     jest-util "^24.9.0"
 
+jest-expect-message@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jest-expect-message/-/jest-expect-message-1.0.2.tgz#6d67cdf093457a607d231038a3b84aa3a076bcba"
+  integrity sha512-WFiXMgwS2lOqQZt1iJMI/hOXpUm32X+ApsuzYcQpW5m16Pv6/Gd9kgC+Q+Q1YVNU04kYcAOv9NXMnjg6kKUy6Q==
+
 jest-get-type@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-24.9.0.tgz#1684a0c8a50f2e4901b6644ae861f579eed2ef0e"
   integrity sha512-lUseMzAley4LhIcpSP9Jf+fTrQ4a1yHQwLNeeVa2cEmbCGeoZAtYPOIv8JaxLD/sUpKxetKGP+gsHl8f8TSj8Q==
+
+jest-get-type@^25.2.6:
+  version "25.2.6"
+  resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-25.2.6.tgz#0b0a32fab8908b44d508be81681487dbabb8d877"
+  integrity sha512-DxjtyzOHjObRM+sM1knti6or+eOgcGU4xVSb2HNP1TqO4ahsT+rqZg+nyqHWJSvWgKC5cG3QjGFBqxLghiF/Ig==
 
 jest-haste-map@^24.9.0:
   version "24.9.0"
@@ -8816,7 +8802,7 @@ pretty-format@^24.0.0, pretty-format@^24.3.0, pretty-format@^24.9.0:
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
 
-pretty-format@^25.1.0:
+pretty-format@^25.1.0, pretty-format@^25.2.1, pretty-format@^25.2.6:
   version "25.2.6"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-25.2.6.tgz#542a1c418d019bbf1cca2e3620443bc1323cb8d7"
   integrity sha512-DEiWxLBaCHneffrIT4B+TpMvkV9RNvvJrd3lY9ew1CEQobDzEXmYT1mg0hJhljZty7kCc10z13ohOFAE8jrUDg==

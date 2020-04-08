@@ -1,0 +1,17 @@
+.input-chip {
+  -webkit-appearance: none;
+  align-items: center;
+  border-radius: 16px;
+  border-width: 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px inset;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  display: inline-flex;
+  height: 32px;
+  outline: none;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  width: 7rem;
+}

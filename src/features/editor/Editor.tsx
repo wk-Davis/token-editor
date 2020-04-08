@@ -1,4 +1,4 @@
-import React, { Dispatch, useReducer } from 'react';
+import React, { Context, Dispatch, createContext, useReducer } from 'react';
 
 import Canvas from '../canvas/Canvas';
 import Menu from '../menu/Menu';
@@ -18,11 +18,9 @@ interface State {
   };
 }
 
-interface Props {
-  token: string;
-}
+export const EditorDispatch: Context<any> = createContext(null);
 
-const Editor: React.FunctionComponent<Props> = ({ token }) => {
+const Editor: React.FunctionComponent<{ token: string }> = ({ token }) => {
   const initialState: State = Object.assign({}, config[token]);
   const reducer = (state: State, action: Action): State => {
     return {
@@ -39,17 +37,19 @@ const Editor: React.FunctionComponent<Props> = ({ token }) => {
   );
   if (!token) return null;
   return (
-    <div className="editor">
-      <div className='col-1'>
-        <Canvas state={state} />
-        <div style={{ background: 'aliceblue', height: '100px' }}>
-          <i>color palette placeholder</i>
+    <EditorDispatch.Provider value={dispatch}>
+      <div className='editor'>
+        <div className='col-1'>
+          <Canvas state={state} />
+          <div style={{ background: 'aliceblue', height: '100px' }}>
+            <i>color palette placeholder</i>
+          </div>
+        </div>
+        <div className='col-2'>
+          <Menu state={state} />
         </div>
       </div>
-      <div className='col-2'>
-        <Menu dispatch={dispatch} state={state} />
-      </div>
-    </div>
+    </EditorDispatch.Provider>
   );
 };
 

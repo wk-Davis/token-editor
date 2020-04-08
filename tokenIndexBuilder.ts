@@ -35,7 +35,7 @@ const path = require('path');
         files.forEach((fileName: string) => {
           const name = fileName.substring(0, fileName.lastIndexOf('.'));
           const importName = `${dirName}_${name}`;
-          configs[dirName][name] = `{ color: '', src: ${importName} }`;
+          configs[dirName][name] = `{ color: '#', src: ${importName} }`;
           imports.push(
             `import ${importName} from './${TOKEN_PATH.substring(
               CONFIG_PATH.length + 1
