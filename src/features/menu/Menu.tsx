@@ -1,6 +1,7 @@
 import React from 'react';
 import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
+import './Menu.css';
 import '@rmwc/list/styles';
 
 import InputChip from '../inputChips/InputChip';
@@ -31,7 +32,7 @@ const Menu: React.FunctionComponent<Props> = ({ state }) => {
 
   let prevGroup: string;
   return (
-    <List nonInteractive>
+    <List>
       {keys.reduce((comps: Array<React.ReactNode>, name) => {
         const delimiterIndex: number = name.indexOf(
           envvars.REACT_APP_DELIMITER

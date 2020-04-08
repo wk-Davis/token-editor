@@ -1,7 +1,7 @@
 import React, { useState, Dispatch } from 'react';
 
-import TokenGrid from './features/grid/Grid';
 import Editor from './features/editor/Editor';
+import TokenGrid from './features/grid/Grid';
 
 import './App.css';
 import '@rmwc/top-app-bar/styles';
@@ -13,15 +13,19 @@ const App: React.FunctionComponent<{}> = () => {
     Dispatch<any>
   ] = useState(null);
 
-  return selectedToken ? (
-    <Editor
-      token={selectedToken}
-      unsetToken={() => {
-        setSelectedToken(null);
-      }}
-    />
-  ) : (
-    <TokenGrid setToken={setSelectedToken} />
+  return (
+    <div className='app'>
+      {selectedToken ? (
+        <Editor
+          token={selectedToken}
+          unsetToken={() => {
+            setSelectedToken(null);
+          }}
+        />
+      ) : (
+        <TokenGrid setToken={setSelectedToken} />
+      )}
+    </div>
   );
 };
 
