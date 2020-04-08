@@ -1,10 +1,11 @@
-import React, { useRef, MutableRefObject, useEffect } from 'react';
+import React, { MutableRefObject, useEffect, useRef } from 'react';
 import { fabric } from 'fabric';
 
 import './Canvas.css';
 import envvars from '../../envvars';
 
 interface Props {
+  canvas: MutableRefObject<any>;
   state: {
     [name: string]: {
       color: string;
@@ -13,18 +14,15 @@ interface Props {
   };
 }
 
-const Canvas: React.FunctionComponent<Props> = ({ state }) => {
+const Canvas: React.FunctionComponent<Props> = ({ canvas, state }) => {
   const canvasRef: MutableRefObject<HTMLCanvasElement | null> = useRef(null);
-  const canvas: MutableRefObject<any | null> = useRef(null);
 
   useEffect(() => {
-    const canvasOpts = { backgroundColor: 'lightgrey' };
-    if (!canvas.current)
+    if (canvas && !canvas.current)
       canvas.current = new fabric.StaticCanvas(
-        (canvasRef.current as unknown) as HTMLCanvasElement,
-        canvasOpts
+        (canvasRef.current as unknown) as HTMLCanvasElement
       );
-  }, []);
+  }, [canvas]);
 
   useEffect(() => {
     Object.keys(state).forEach((key: string) => {
@@ -47,9 +45,9 @@ const Canvas: React.FunctionComponent<Props> = ({ state }) => {
       );
     });
     return function clear() {
-      canvas.current.clear();
+      canvas?.current.clear();
     };
-  }, [state]);
+  }, [canvas, state]);
 
   return <canvas height={200} ref={canvasRef} width={200}></canvas>;
 };

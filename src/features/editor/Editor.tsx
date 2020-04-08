@@ -1,4 +1,12 @@
-import React, { Context, Dispatch, createContext, useReducer } from 'react';
+import React, {
+  Context,
+  Dispatch,
+  MutableRefObject,
+  createContext,
+  useReducer,
+  useRef,
+} from 'react';
+import { saveAs } from 'file-saver';
 
 import Canvas from '../canvas/Canvas';
 import EditorHeader from './EditorHeader';
@@ -25,6 +33,7 @@ const Editor: React.FunctionComponent<{
   token: string;
   unsetToken: () => void;
 }> = ({ token, unsetToken }) => {
+  const canvas: MutableRefObject<fabric.Canvas | null> = useRef(null);
   const initialState: State = Object.assign({}, config[token]);
   const reducer = (state: State, action: Action): State => {
     return {
@@ -39,13 +48,24 @@ const Editor: React.FunctionComponent<{
     reducer,
     initialState
   );
+  const saveCanvas: () => void = () => {
+    if (canvas.current) {
+      const data = canvas.current.toDataURL({
+        format: 'png',
+        multiplier: 1,
+        enableRetinaScaling: true,
+      });
+      saveAs(data, `${token}.png`);
+    }
+  };
+
   if (!token) return null;
   return (
     <EditorDispatch.Provider value={dispatch}>
-      <EditorHeader unsetToken={unsetToken} />
+      <EditorHeader saveCanvas={saveCanvas} unsetToken={unsetToken} />
       <div className='editor'>
         <div className='col-1'>
-          <Canvas state={state} />
+          <Canvas canvas={canvas} state={state} />
           <div style={{ background: 'aliceblue', height: '100px' }}>
             <i>color palette placeholder</i>
           </div>

@@ -5,5 +5,5 @@ import Canvas from './Canvas';
 import config from '../../assets';
 
 test('renders without error', () => {
-  render(<Canvas state={config.cleric} />);
+  render(<Canvas canvas={{ current: null }} state={config.cleric} />);
 });
