@@ -7,6 +7,9 @@ import React, {
 import { CustomPicker } from 'react-color';
 import { Hue, Saturation } from 'react-color/lib/components/common';
 
+import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
+import getTextColor from '../common/getTextColor';
+
 import './ColorPicker.css';
 
 interface PickerProps {
@@ -46,6 +49,7 @@ const ColorPicker: React.FunctionComponent<Props> = ({
   dispatch,
   selectedComponent,
 }) => {
+  const [isOpen, setIsOpen]: [boolean, Dispatch<any>] = useState(true);
   const [ownColor, setOwnColor]: [string, Dispatch<any>] = useState(color);
   useEffect(() => {
     setOwnColor(color);
@@ -59,13 +63,35 @@ const ColorPicker: React.FunctionComponent<Props> = ({
     dispatch({ type: selectedComponent, payload: color.hex });
   };
 
+  const togglePicker = (): void => {
+    setIsOpen(!isOpen);
+  };
+
+  const iconColor: string = { black: '', white: 'white', gray: 'gray' }[
+    getTextColor(ownColor)
+  ];
+
   return (
     <>
-      <Picker
-        color={ownColor}
-        onChange={handleChange}
-        onChangeComplete={handleChangeComplete}
-      />
+      <button
+        className='color-toggle'
+        onClick={togglePicker}
+        role='button'
+        style={{
+          backgroundColor: ownColor,
+          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+        }}
+        title={`${isOpen ? 'Hide' : 'Show'} Color Picker`}
+      >
+        <img src={chevron_right} className={iconColor} />
+      </button>
+      {isOpen && (
+        <Picker
+          color={ownColor}
+          onChange={handleChange}
+          onChangeComplete={handleChangeComplete}
+        />
+      )}
     </>
   );
 };

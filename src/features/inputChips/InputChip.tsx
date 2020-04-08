@@ -5,9 +5,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import convert from 'color-convert';
 
-import getTextColor from './getTextColor';
+import getTextColor from '../common/getTextColor';
 import useDebounce from './useDebounce';
 import { EditorDispatch } from '../editor/Editor';
 
@@ -47,10 +46,9 @@ const InputChip: React.FunctionComponent<Props> = ({
     setOwnColor(stateColor);
   }, [stateColor]);
 
-  const parsedColor = convert.hex.rgb(stateColor);
   const styles = {
     backgroundColor: stateColor,
-    color: getTextColor(convert.rgb.hex(parsedColor)),
+    color: getTextColor(stateColor),
   };
 
   return (

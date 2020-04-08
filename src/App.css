@@ -31,6 +31,9 @@
 }
 
 .white {
-  filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(160deg)
-    brightness(105%) contrast(105%);
+  filter: invert(100%);
+}
+
+.gray {
+  filter: invert(50%);
 }
