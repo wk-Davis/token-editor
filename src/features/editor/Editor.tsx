@@ -9,6 +9,7 @@ import React, {
 import { saveAs } from 'file-saver';
 
 import Canvas from '../canvas/Canvas';
+import ColorPicker from '../colorPicker/ColorPicker';
 import EditorHeader from './EditorHeader';
 import Menu from '../menu/Menu';
 import config from '../../assets';
@@ -16,15 +17,18 @@ import config from '../../assets';
 import './Editor.css';
 
 interface Action {
-  type: string;
+  type: string | 'selectedComponent';
   payload: string;
 }
 
 interface State {
-  [prop: string]: {
-    color: string;
-    src: string;
+  token: {
+    [prop: string]: {
+      color: string;
+      src: string;
+    };
   };
+  selectedComponent: string;
 }
 
 export const EditorDispatch: Context<any> = createContext(null);
@@ -34,13 +38,25 @@ const Editor: React.FunctionComponent<{
   unsetToken: () => void;
 }> = ({ token, unsetToken }) => {
   const canvas: MutableRefObject<fabric.Canvas | null> = useRef(null);
-  const initialState: State = Object.assign({}, config[token]);
+  const initialState: State = Object.assign(
+    {},
+    { token: config[token] },
+    { selectedComponent: '' }
+  );
   const reducer = (state: State, action: Action): State => {
+    if (action.type === 'selectedComponent')
+      return {
+        ...state,
+        selectedComponent: action.payload,
+      };
     return {
       ...state,
-      [action.type]: {
-        ...state[action.type],
-        color: action.payload,
+      token: {
+        ...state.token,
+        [action.type]: {
+          ...state.token[action.type],
+          color: action.payload,
+        },
       },
     };
   };
@@ -48,6 +64,7 @@ const Editor: React.FunctionComponent<{
     reducer,
     initialState
   );
+  const { selectedComponent } = state;
   const saveCanvas: () => void = () => {
     if (canvas.current) {
       const data = canvas.current.toDataURL({
@@ -65,13 +82,17 @@ const Editor: React.FunctionComponent<{
       <EditorHeader saveCanvas={saveCanvas} unsetToken={unsetToken} />
       <div className='editor'>
         <div className='col-1'>
-          <Canvas canvas={canvas} state={state} />
-          <div style={{ background: 'aliceblue', height: '100px' }}>
-            <i>color palette placeholder</i>
-          </div>
+          <Canvas canvas={canvas} state={state.token} />
+          {selectedComponent && (
+            <ColorPicker
+              color={state.token[selectedComponent].color}
+              dispatch={dispatch}
+              selectedComponent={selectedComponent}
+            />
+          )}
         </div>
         <div className='col-2'>
-          <Menu state={state} />
+          <Menu state={state.token} />
         </div>
       </div>
     </EditorDispatch.Provider>

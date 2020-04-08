@@ -31,12 +31,20 @@ const InputChip: React.FunctionComponent<Props> = ({
     const newVal = `#${e.currentTarget.value
       .replace(/[^a-fA-F\d]/g, '')
       .slice(0, 6)}`;
-    setOwnValue(newVal.toUpperCase());
+    setOwnValue(newVal);
+  };
+
+  const selectComponent = () => {
+    dispatch({ type: 'selectedComponent', payload: name });
   };
 
   useEffect(() => {
     if (debouncedValue) dispatch({ type: name, payload: debouncedValue });
   }, [debouncedValue, dispatch, name]);
+
+  useEffect(() => {
+    setOwnValue(stateValue);
+  }, [stateValue]);
 
   const styles = {
     backgroundColor: `${stateValue}`,
@@ -49,8 +57,9 @@ const InputChip: React.FunctionComponent<Props> = ({
       style={styles}
       className={`${props.className} input-chip`}
       name={name}
-      value={ownValue}
+      value={ownValue.toUpperCase()}
       onChange={handleChange}
+      onClick={selectComponent}
     />
   );
 };
