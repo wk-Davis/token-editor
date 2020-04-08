@@ -3,9 +3,9 @@ import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
 import '@rmwc/list/styles';
 
+import InputChip from '../inputChips/InputChip';
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
 import envvars from '../../envvars';
-import InputChip from './InputChip';
 
 const GroupHandle: React.FunctionComponent<{ title: string }> = ({
   title,
@@ -55,7 +55,7 @@ const Menu: React.FunctionComponent<Props> = ({ state }) => {
                   <ListItem ripple={false} key={key}>
                     {subName}
                     <ListItemMeta>
-                      <InputChip name={key} stateValue={state[key].color} />
+                      <InputChip name={key} stateColor={state[key].color} />
                     </ListItemMeta>
                   </ListItem>
                 );
@@ -67,7 +67,7 @@ const Menu: React.FunctionComponent<Props> = ({ state }) => {
             <ListItem ripple={false} key={name}>
               {name}
               <ListItemMeta>
-                <InputChip name={name} stateValue={state[name].color} />
+                <InputChip name={name} stateColor={state[name].color} />
               </ListItemMeta>
             </ListItem>
           );

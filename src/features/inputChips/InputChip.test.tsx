@@ -7,7 +7,7 @@ jest.mock('../editor/Editor.tsx');
 
 test('renders an input with a hex color value', () => {
   const { getByDisplayValue } = render(
-    <InputChip name='skin' stateValue='#CCCCff' />
+    <InputChip name='skin' stateColor='#CCCCff' />
   );
   const value = getByDisplayValue('#CCCCFF');
   expect(value).toBeInTheDocument();

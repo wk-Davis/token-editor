@@ -1,13 +1,13 @@
 import getTextColor from './getTextColor';
 
-type Expected = 'white' | 'black';
+type Expected = 'white' | 'black' | 'gray';
 
 test('getTextColor()', () => {
   const tests: Array<[string, Expected]> = [
     ['#FFFFFF', 'black'],
     ['#C0C0C0', 'black'],
     ['#808080', 'black'],
-    ['000000', 'white'],
+    ['000000', 'gray'],
     ['FF0000', 'white'],
     ['800000', 'white'],
     ['FFFF00', 'black'],

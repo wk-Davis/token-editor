@@ -1,6 +1,7 @@
-const getTextColor = (hex: string): string => {
+const getTextColor = (hex: string): 'black' | 'white' | 'gray' => {
   const hexStr = hex.startsWith('#') ? hex.substring(1) : hex;
-  if (hexStr === '000000') return 'white';
+  if (hexStr === '000000') return 'gray';
+
   let r = parseInt(hexStr.substr(0, 2), 16);
   let g = parseInt(hexStr.substr(2, 2), 16);
   let b = parseInt(hexStr.substr(4, 2), 16);

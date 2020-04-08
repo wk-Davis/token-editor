@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import convert from 'color-convert';
 
 import getTextColor from './getTextColor';
 import useDebounce from './useDebounce';
@@ -13,25 +14,25 @@ import { EditorDispatch } from '../editor/Editor';
 import './InputChip.css';
 
 interface Props {
-  name: string;
-  stateValue: string;
   className?: string;
+  name: string;
+  stateColor: string;
 }
 
 const InputChip: React.FunctionComponent<Props> = ({
   name,
-  stateValue,
+  stateColor,
   ...props
 }) => {
-  const [ownValue, setOwnValue] = useState(stateValue);
+  const [ownColor, setOwnColor] = useState(stateColor);
   const dispatch: Dispatch<any> = useContext(EditorDispatch);
-  const debouncedValue: string = useDebounce(ownValue, 300);
+  const debouncedColor: string = useDebounce(ownColor, 300);
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const newVal = `#${e.currentTarget.value
       .replace(/[^a-fA-F\d]/g, '')
       .slice(0, 6)}`;
-    setOwnValue(newVal);
+    setOwnColor(newVal);
   };
 
   const selectComponent = () => {
@@ -39,27 +40,28 @@ const InputChip: React.FunctionComponent<Props> = ({
   };
 
   useEffect(() => {
-    if (debouncedValue) dispatch({ type: name, payload: debouncedValue });
-  }, [debouncedValue, dispatch, name]);
+    if (debouncedColor) dispatch({ type: name, payload: debouncedColor });
+  }, [debouncedColor, dispatch, name]);
 
   useEffect(() => {
-    setOwnValue(stateValue);
-  }, [stateValue]);
+    setOwnColor(stateColor);
+  }, [stateColor]);
 
+  const parsedColor = convert.hex.rgb(stateColor);
   const styles = {
-    backgroundColor: `${stateValue}`,
-    color: getTextColor(`${stateValue}`),
+    backgroundColor: stateColor,
+    color: getTextColor(convert.rgb.hex(parsedColor)),
   };
 
   return (
     <input
       {...props}
-      style={styles}
       className={`${props.className} input-chip`}
       name={name}
-      value={ownValue.toUpperCase()}
       onChange={handleChange}
       onClick={selectComponent}
+      style={styles}
+      value={ownColor.toUpperCase()}
     />
   );
 };
