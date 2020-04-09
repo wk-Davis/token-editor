@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useEffect, useRef } from 'react';
-import { fabric } from 'fabric';
+import { fabric } from './fabric.js';
 
 import './Canvas.css';
 import envvars from '../../envvars';
