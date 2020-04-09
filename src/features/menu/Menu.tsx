@@ -19,6 +19,8 @@ const GroupHandle: React.FunctionComponent<{ title: string }> = ({
 );
 
 interface Props {
+  selectComponent: (arg: string) => void;
+  selectedComponent: string;
   state: {
     [name: string]: {
       color: string;
@@ -27,7 +29,11 @@ interface Props {
   };
 }
 
-const Menu: React.FunctionComponent<Props> = ({ state }) => {
+const Menu: React.FunctionComponent<Props> = ({
+  selectComponent,
+  selectedComponent,
+  state,
+}) => {
   const keys: string[] = Object.keys(state).sort();
 
   let prevGroup: string;
@@ -53,7 +59,13 @@ const Menu: React.FunctionComponent<Props> = ({ state }) => {
               {groupKeys.map((key) => {
                 const subName = key.substring(groupName.length + 1);
                 return (
-                  <ListItem ripple={false} key={key}>
+                  <ListItem
+                    key={key}
+                    onClick={() => {
+                      selectComponent(key);
+                    }}
+                    selected={selectedComponent === key}
+                  >
                     {subName}
                     <ListItemMeta>
                       <InputChip name={key} stateColor={state[key].color} />
@@ -65,7 +77,13 @@ const Menu: React.FunctionComponent<Props> = ({ state }) => {
           );
         } else {
           comps.push(
-            <ListItem ripple={false} key={name}>
+            <ListItem
+              key={name}
+              onClick={() => {
+                selectComponent(name);
+              }}
+              selected={selectedComponent === name}
+            >
               {name}
               <ListItemMeta>
                 <InputChip name={name} stateColor={state[name].color} />

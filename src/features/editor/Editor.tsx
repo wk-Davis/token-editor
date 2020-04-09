@@ -39,9 +39,8 @@ const Editor: React.FunctionComponent<{
 }> = ({ token, unsetToken }) => {
   const canvas: MutableRefObject<fabric.Canvas | null> = useRef(null);
   const initialState: State = Object.assign(
-    {},
-    { token: config[token] },
-    { selectedComponent: '' }
+    { selectedComponent: '' },
+    { token: config[token] }
   );
   const reducer = (state: State, action: Action): State => {
     if (action.type === 'selectedComponent')
@@ -65,6 +64,11 @@ const Editor: React.FunctionComponent<{
     initialState
   );
   const { selectedComponent } = state;
+
+  const selectComponent = (componentName: string) => {
+    dispatch({ type: 'selectedComponent', payload: componentName });
+  };
+
   const saveCanvas: () => void = () => {
     if (canvas.current) {
       const data = canvas.current.toDataURL({
@@ -92,7 +96,11 @@ const Editor: React.FunctionComponent<{
           )}
         </div>
         <div className='col-2'>
-          <Menu state={state.token} />
+          <Menu
+            state={state.token}
+            selectComponent={selectComponent}
+            selectedComponent={selectedComponent}
+          />
         </div>
       </div>
     </EditorDispatch.Provider>
