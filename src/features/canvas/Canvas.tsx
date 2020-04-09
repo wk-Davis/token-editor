@@ -6,12 +6,7 @@ import envvars from '../../envvars';
 
 interface Props {
   canvas: MutableRefObject<any>;
-  state: {
-    [name: string]: {
-      color: string;
-      src: string;
-    };
-  };
+  state: Token;
 }
 
 const Canvas: React.FunctionComponent<Props> = ({ canvas, state }) => {

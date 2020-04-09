@@ -13,7 +13,7 @@ import getTextColor from '../common/getTextColor';
 import './ColorPicker.css';
 
 interface PickerProps {
-  hex: string;
+  hex: HexStr;
   rgb: {};
   hsl: {};
   onChange: (...arg: any[]) => void;
@@ -50,16 +50,16 @@ const ColorPicker: React.FunctionComponent<Props> = ({
   selectedComponent,
 }) => {
   const [isOpen, setIsOpen]: [boolean, Dispatch<any>] = useState(true);
-  const [ownColor, setOwnColor]: [string, Dispatch<any>] = useState(color);
+  const [ownColor, setOwnColor]: [HexStr, Dispatch<HexStr>] = useState(color);
   useEffect(() => {
     setOwnColor(color);
   }, [color, selectedComponent]);
 
-  const handleChange = (color: { hex: string }) => {
+  const handleChange = (color: { hex: HexStr }) => {
     setOwnColor(color.hex);
   };
 
-  const handleChangeComplete = (color: { hex: string }) => {
+  const handleChangeComplete = (color: { hex: HexStr }) => {
     dispatch({ type: selectedComponent, payload: color.hex });
   };
 
@@ -76,14 +76,13 @@ const ColorPicker: React.FunctionComponent<Props> = ({
       <button
         className='color-toggle'
         onClick={togglePicker}
-        role='button'
         style={{
           backgroundColor: ownColor,
           transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
         }}
         title={`${isOpen ? 'Hide' : 'Show'} Color Picker`}
       >
-        <img src={chevron_right} className={iconColor} />
+        <img alt='arrow indicator' src={chevron_right} className={iconColor} />
       </button>
       {isOpen && (
         <Picker

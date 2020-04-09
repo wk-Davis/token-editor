@@ -22,12 +22,7 @@ interface Action {
 }
 
 interface State {
-  token: {
-    [prop: string]: {
-      color: string;
-      src: string;
-    };
-  };
+  token: Token;
   selectedComponent: string;
 }
 
