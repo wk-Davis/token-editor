@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/token-editor/static/css/main.f98f794a.chunk.css",
-    "main.js": "/token-editor/static/js/main.c57a60da.chunk.js",
-    "main.js.map": "/token-editor/static/js/main.c57a60da.chunk.js.map",
+    "main.css": "/token-editor/static/css/main.49f06259.chunk.css",
+    "main.js": "/token-editor/static/js/main.5ebc341e.chunk.js",
+    "main.js.map": "/token-editor/static/js/main.5ebc341e.chunk.js.map",
     "runtime-main.js": "/token-editor/static/js/runtime-main.f9256278.js",
     "runtime-main.js.map": "/token-editor/static/js/runtime-main.f9256278.js.map",
     "static/css/2.284b8259.chunk.css": "/token-editor/static/css/2.284b8259.chunk.css",
-    "static/js/2.973d41db.chunk.js": "/token-editor/static/js/2.973d41db.chunk.js",
-    "static/js/2.973d41db.chunk.js.map": "/token-editor/static/js/2.973d41db.chunk.js.map",
+    "static/js/2.c4c2f9bc.chunk.js": "/token-editor/static/js/2.c4c2f9bc.chunk.js",
+    "static/js/2.c4c2f9bc.chunk.js.map": "/token-editor/static/js/2.c4c2f9bc.chunk.js.map",
     "index.html": "/token-editor/index.html",
-    "precache-manifest.7c90366b791295d71754b4614e43d984.js": "/token-editor/precache-manifest.7c90366b791295d71754b4614e43d984.js",
+    "precache-manifest.4290cae64a206abe9980aab19dd05ebf.js": "/token-editor/precache-manifest.4290cae64a206abe9980aab19dd05ebf.js",
     "service-worker.js": "/token-editor/service-worker.js",
     "static/css/2.284b8259.chunk.css.map": "/token-editor/static/css/2.284b8259.chunk.css.map",
-    "static/css/main.f98f794a.chunk.css.map": "/token-editor/static/css/main.f98f794a.chunk.css.map",
-    "static/js/2.973d41db.chunk.js.LICENSE.txt": "/token-editor/static/js/2.973d41db.chunk.js.LICENSE.txt",
+    "static/css/main.49f06259.chunk.css.map": "/token-editor/static/css/main.49f06259.chunk.css.map",
+    "static/js/2.c4c2f9bc.chunk.js.LICENSE.txt": "/token-editor/static/js/2.c4c2f9bc.chunk.js.LICENSE.txt",
     "static/media/chevron_right-black-18dp.svg": "/token-editor/static/media/chevron_right-black-18dp.0c12c3a8.svg",
     "static/media/lineart.png": "/token-editor/static/media/lineart.c35fe11b.png",
     "static/media/save_alt-black-18dp.svg": "/token-editor/static/media/save_alt-black-18dp.0bb6882f.svg"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.f9256278.js",
     "static/css/2.284b8259.chunk.css",
-    "static/js/2.973d41db.chunk.js",
-    "static/css/main.f98f794a.chunk.css",
-    "static/js/main.c57a60da.chunk.js"
+    "static/js/2.c4c2f9bc.chunk.js",
+    "static/css/main.49f06259.chunk.css",
+    "static/js/main.5ebc341e.chunk.js"
   ]
 }
