@@ -3,6 +3,7 @@
         "envvars",
         "esnext",
         "flipx",
-        "rmwc"
+        "rmwc",
+        "tinycolor"
     ]
 }

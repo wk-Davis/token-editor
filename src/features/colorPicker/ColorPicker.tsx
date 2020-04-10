@@ -4,8 +4,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { CustomPicker } from 'react-color';
-import { Hue, Saturation } from 'react-color/lib/components/common';
+import ColorWrap from './ColorWrap';
+import Hue from './hue/Hue';
+import Saturation from './saturation/Saturation';
 
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
 import getTextColor from '../common/getTextColor';
@@ -36,7 +37,7 @@ const PickerComp: React.FunctionComponent<PickerProps> = (props) => {
   );
 };
 
-const Picker = CustomPicker(PickerComp as StatelessComponent);
+const Picker = ColorWrap(PickerComp as StatelessComponent);
 
 interface Props {
   selectedComponent: string;
