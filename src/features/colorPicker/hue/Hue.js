@@ -9,7 +9,6 @@ export class Hue extends (PureComponent || Component) {
   handleChange = (e) => {
     const change = hue.calculateChange(
       e,
-      this.props.direction,
       this.props.hsl,
       this.container
     );
