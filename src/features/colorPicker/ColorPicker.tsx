@@ -23,9 +23,7 @@ interface PickerProps {
 const PickerComp: React.FunctionComponent<PickerProps> = (props) => {
   return (
     <div className='picker'>
-      <div className='saturation-container'>
-        <Saturation {...props} />
-      </div>
+      <Saturation {...props} />
       <Hue {...props} />
     </div>
   );
