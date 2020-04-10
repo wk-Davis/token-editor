@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.hue-container {
+.hue-selector {
   border-radius: 4px;
   height: 1rem;
   margin-top: 8px;
@@ -17,7 +17,14 @@
   width: 100%;
 }
 
-.hue-pointer {
+.hue-selector__bar {
+  padding: 0 2px;
+  position: relative;
+  height: 100%;
+}
+
+.hue-selector__pointer {
+  position: absolute;
   background-color: rgb(248, 248, 248);
   border-radius: 6px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);

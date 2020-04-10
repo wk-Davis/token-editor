@@ -20,19 +20,13 @@ interface PickerProps {
   onChange: (...arg: any[]) => void;
 }
 
-const Pointer: React.FunctionComponent<{}> = () => {
-  return <div className='hue-pointer' />;
-};
-
 const PickerComp: React.FunctionComponent<PickerProps> = (props) => {
   return (
     <div className='picker'>
       <div className='saturation-container'>
         <Saturation {...props} />
       </div>
-      <div className='hue-container'>
-        <Hue {...props} pointer={Pointer} />
-      </div>
+      <Hue {...props} />
     </div>
   );
 };
