@@ -13,10 +13,20 @@ import getTextColor from '../common/getTextColor';
 
 import './ColorPicker.css';
 
-interface PickerProps {
+export type ColorChangeEvent =
+  | React.MouseEvent<HTMLDivElement, MouseEvent>
+  | React.TouchEvent<HTMLDivElement>;
+
+export type ChangedColor = {
   hex: HexStr;
-  rgb: {};
-  hsl: {};
+  hsl: tinycolor.ColorFormats.HSLA;
+  hsv: tinycolor.ColorFormats.HSVA;
+  rgb: tinycolor.ColorFormats.RGB;
+  oldHue?: number;
+  src?: string;
+};
+
+interface PickerProps extends ChangedColor {
   onChange: (...arg: any[]) => void;
 }
 
@@ -48,11 +58,11 @@ const ColorPicker: React.FunctionComponent<Props> = ({
     setOwnColor(color);
   }, [color, selectedComponent]);
 
-  const handleChange = (color: { hex: HexStr }) => {
+  const handleChange = (color: ChangedColor) => {
     setOwnColor(color.hex);
   };
 
-  const handleChangeComplete = (color: { hex: HexStr }) => {
+  const handleChangeComplete = (color: ChangedColor) => {
     dispatch({ type: selectedComponent, payload: color.hex });
   };
 
