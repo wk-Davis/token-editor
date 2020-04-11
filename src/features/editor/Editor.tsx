@@ -6,7 +6,6 @@ import React, {
   useReducer,
   useRef,
 } from 'react';
-import { saveAs } from 'file-saver';
 
 import Canvas from '../canvas/Canvas';
 import ColorPicker from '../colorPicker/ColorPicker';
@@ -32,7 +31,7 @@ const Editor: React.FunctionComponent<{
   token: string;
   unsetToken: () => void;
 }> = ({ token, unsetToken }) => {
-  const canvas: MutableRefObject<fabric.Canvas | null> = useRef(null);
+  const saveCanvas: MutableRefObject<(() => void) | null> = useRef(null);
   const initialState: State = Object.assign(
     { selectedComponent: '' },
     { token: config[token] }
@@ -64,24 +63,16 @@ const Editor: React.FunctionComponent<{
     dispatch({ type: 'selectedComponent', payload: componentName });
   };
 
-  const saveCanvas: () => void = () => {
-    if (canvas.current) {
-      const data = canvas.current.toDataURL({
-        format: 'png',
-        multiplier: 1,
-        enableRetinaScaling: true,
-      });
-      saveAs(data, `${token}.png`);
-    }
-  };
-
   if (!token) return null;
   return (
     <EditorDispatch.Provider value={dispatch}>
-      <EditorHeader saveCanvas={saveCanvas} unsetToken={unsetToken} />
+      <EditorHeader
+        saveCanvas={saveCanvas.current as () => void}
+        unsetToken={unsetToken}
+      />
       <div className='editor'>
         <div className='col-1'>
-          <Canvas canvas={canvas} state={state.token} />
+          <Canvas saveCanvas={saveCanvas} state={state.token} />
           {selectedComponent && (
             <ColorPicker
               color={state.token[selectedComponent].color}
