@@ -20,12 +20,6 @@
   visibility: hidden;
 }
 
-.no-hover:hover {
-  background-color: initial;
-  border-color: rgba(0, 0, 0, 0);
-  border-style: solid;
-}
-
 .text-center {
   text-align: center;
 }

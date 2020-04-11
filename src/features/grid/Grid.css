@@ -3,12 +3,12 @@
   flex-direction: column;
   padding: 8px 32px;
 }
-.mdc-image-list{
+.mdc-image-list {
   justify-content: center;
 }
 .mdc-image-list__item {
   border-color: rgba(0, 0, 0, 0);
-  border-radius: 4px;
+  border-radius: 10px;
   border-style: solid;
   border: 1px;
   margin: 4px;
@@ -16,5 +16,9 @@
 .mdc-image-list__item:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+}
+
+.mdc-image-list__item.no-hover:hover {
+  background-color: initial;
+  border-color: rgba(0, 0, 0, 0);
 }
