@@ -1,95 +1,62 @@
-import React, {
-  Context,
-  Dispatch,
-  MutableRefObject,
-  createContext,
-  useReducer,
-  useRef,
-} from 'react';
+import React, { Dispatch, MutableRefObject, useRef, useState } from 'react';
 
 import Canvas from '../canvas/Canvas';
 import ColorPicker from '../colorPicker/ColorPicker';
 import EditorHeader from './EditorHeader';
 import Menu from '../menu/Menu';
-import config from '../../assets';
+import { TokenState, getState, useDebouncedCallback } from './editorUtil';
 
 import './Editor.css';
 
-interface Action {
-  type: string | 'selectedComponent';
-  payload: string;
-}
-
-interface State {
-  token: Token;
-  selectedComponent: string;
-}
-
-export const EditorDispatch: Context<any> = createContext(null);
-
-const Editor: React.FunctionComponent<{
+interface Props {
   token: string;
   unsetToken: () => void;
-}> = ({ token, unsetToken }) => {
-  const saveCanvas: MutableRefObject<(() => void) | null> = useRef(null);
-  const initialState: State = Object.assign(
-    { selectedComponent: '' },
-    { token: config[token] }
-  );
-  const reducer = (state: State, action: Action): State => {
-    if (action.type === 'selectedComponent')
-      return {
-        ...state,
-        selectedComponent: action.payload,
-      };
-    return {
-      ...state,
-      token: {
-        ...state.token,
-        [action.type]: {
-          ...state.token[action.type],
-          color: action.payload,
-        },
-      },
-    };
-  };
-  const [state, dispatch]: [State, Dispatch<any>] = useReducer(
-    reducer,
-    initialState
-  );
-  const { selectedComponent } = state;
+}
 
-  const selectComponent = (componentName: string) => {
-    dispatch({ type: 'selectedComponent', payload: componentName });
-  };
+const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
+  const saveCanvas: MutableRefObject<(() => void) | null> = useRef(null);
+  const [selectedComponent, selectComponent]: [
+    string | null,
+    Dispatch<any>
+  ] = useState(null);
+  const [tokenState, setTokenState]: [TokenState, Dispatch<any>] = useState(
+    getState(token)
+  );
+  const setColor = useDebouncedCallback((color) => {
+    if (selectedComponent)
+      setTokenState((prevState: TokenState) => ({
+        ...prevState,
+        [selectedComponent]: color,
+      }));
+  });
 
   if (!token) return null;
   return (
-    <EditorDispatch.Provider value={dispatch}>
+    <>
       <EditorHeader
         saveCanvas={saveCanvas.current as () => void}
         unsetToken={unsetToken}
       />
       <div className='editor'>
         <div className='col-1'>
-          <Canvas saveCanvas={saveCanvas} state={state.token} />
+          <Canvas saveCanvas={saveCanvas} state={tokenState} token={token} />
           {selectedComponent && (
             <ColorPicker
-              color={state.token[selectedComponent].color}
-              dispatch={dispatch}
-              selectedComponent={selectedComponent}
+              color={tokenState[selectedComponent]}
+              setColor={setColor}
             />
           )}
         </div>
         <div className='col-2'>
           <Menu
-            state={state.token}
+            state={tokenState}
             selectComponent={selectComponent}
             selectedComponent={selectedComponent}
+            setColor={setColor}
           />
         </div>
       </div>
-    </EditorDispatch.Provider>
+    </>
   );
 };
 

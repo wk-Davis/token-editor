@@ -5,7 +5,6 @@ import * as utils from './colorUtil';
 import Hue from './hue/Hue';
 import Saturation from './saturation/Saturation';
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
-import useDebounce from '../inputChips/useDebounce';
 
 import './ColorPicker.css';
 
@@ -21,40 +20,34 @@ export type PickerColor = {
 };
 
 interface Props {
-  selectedComponent: string;
   color: string;
-  dispatch: Dispatch<any>;
+  setColor: (arg: string) => void;
 }
 
 const ColorPicker: React.FunctionComponent<Props> = ({
   color: stateColor,
-  dispatch,
-  selectedComponent,
+  setColor,
 }) => {
   const [isOpen, setIsOpen]: [boolean, Dispatch<any>] = useState(true);
   const [ownColor, setOwnColor]: [
     PickerColor,
     Dispatch<PickerColor>
   ] = useState(utils.toState(stateColor));
-  const debouncedColor: string = useDebounce(ownColor.hex, 300);
 
   useEffect(() => {
     setOwnColor(utils.toState(stateColor));
-  }, [stateColor, selectedComponent]);
+  }, [stateColor]);
 
   const handleChange = (
     color: tinycolor.ColorFormats.HSLA | tinycolor.ColorFormats.HSVA
   ): void => {
     const isValidColor: boolean = utils.simpleCheckForValidColor(color);
-    if (isValidColor) setOwnColor(utils.toState(color, color.h || ownColor.oldHue));
+    if (isValidColor) {
+      const newColor = utils.toState(color, color.h || ownColor.oldHue);
+      setOwnColor(newColor);
+      setColor(newColor.hex);
+    }
   };
-
-  useEffect(() => {
-    if (debouncedColor)
-      dispatch({ type: selectedComponent, payload: debouncedColor });
-    // TODO: Remove selectedComponent dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedColor, dispatch]);
 
   const togglePicker = (): void => {
     setIsOpen(!isOpen);

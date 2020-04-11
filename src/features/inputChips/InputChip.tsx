@@ -1,46 +1,29 @@
-import React, {
-  Dispatch,
-  FormEvent,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import tinycolor from 'tinycolor2';
-
-import useDebounce from './useDebounce';
-import { EditorDispatch } from '../editor/Editor';
 
 import './InputChip.css';
 
 interface Props {
   className?: string;
   name: string;
+  setColor: (color: HexStr) => void;
   stateColor: string;
 }
 
 const InputChip: React.FunctionComponent<Props> = ({
   name,
   stateColor,
+  setColor,
   ...props
 }) => {
   const [ownColor, setOwnColor] = useState(stateColor);
-  const dispatch: Dispatch<any> = useContext(EditorDispatch);
-  const debouncedColor: string = useDebounce(ownColor, 300);
-
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const newVal = `#${e.currentTarget.value
       .replace(/[^a-fA-F\d]/g, '')
       .slice(0, 6)}`;
     setOwnColor(newVal);
+    setColor(newVal);
   };
-
-  const selectComponent = () => {
-    dispatch({ type: 'selectedComponent', payload: name });
-  };
-
-  useEffect(() => {
-    if (debouncedColor) dispatch({ type: name, payload: debouncedColor });
-  }, [debouncedColor, dispatch, name]);
 
   useEffect(() => {
     setOwnColor(stateColor);
@@ -62,9 +45,8 @@ const InputChip: React.FunctionComponent<Props> = ({
       className={`${props.className} input-chip`}
       name={name}
       onChange={handleChange}
-      onClick={selectComponent}
       style={styles}
-      value={ownColor.toUpperCase()}
+      value={ownColor?.toUpperCase()}
     />
   );
 };

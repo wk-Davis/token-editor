@@ -6,9 +6,12 @@ import InputChip from './InputChip';
 jest.mock('../editor/Editor.tsx');
 
 test('renders an input with a hex color value', () => {
-  const { getByDisplayValue } = render(
-    <InputChip name='skin' stateColor='#CCCCff' />
-  );
-  const value = getByDisplayValue('#CCCCFF');
+  const props = {
+    name: 'skin',
+    stateColor: '#cccfff',
+    setColor: () => {},
+  };
+  const { getByDisplayValue } = render(<InputChip {...props} />);
+  const value = getByDisplayValue('#CCCFFF');
   expect(value).toBeInTheDocument();
 });

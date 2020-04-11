@@ -4,13 +4,19 @@ import { saveAs } from 'file-saver';
 
 import './Canvas.css';
 import envvars from '../../envvars';
+import { getSources } from '../editor/editorUtil';
 
 interface Props {
   saveCanvas: MutableRefObject<(() => void) | null>;
-  state: Token;
+  state: { [filename: string]: string };
+  token: string;
 }
 
-const Canvas: React.FunctionComponent<Props> = ({ saveCanvas, state }) => {
+const Canvas: React.FunctionComponent<Props> = ({
+  saveCanvas,
+  state,
+  token,
+}) => {
   const canvasRef: MutableRefObject<HTMLCanvasElement | null> = useRef(null);
   const fabricCanvas: MutableRefObject<fabric.StaticCanvas | null> = useRef(
     null
@@ -35,13 +41,14 @@ const Canvas: React.FunctionComponent<Props> = ({ saveCanvas, state }) => {
   }, [saveCanvas]);
 
   useEffect(() => {
-    if (fabricCanvas.current) {
-      Object.keys(state).forEach((key: string) => {
+    if (fabricCanvas.current && token) {
+      const sources = getSources(token);
+      Object.keys(sources).forEach((key: string) => {
         fabric.Image.fromURL(
-          state[key].src,
+          sources[key],
           (img: fabric.Image) => {
             const filter = new fabric.Image.filters.BlendColor({
-              color: state[key].color,
+              color: state[key],
               mode: 'tint',
               alpha: 1,
             });
@@ -59,7 +66,7 @@ const Canvas: React.FunctionComponent<Props> = ({ saveCanvas, state }) => {
         fabricCanvas.current?.clear();
       };
     }
-  }, [state]);
+  }, [state, token]);
 
   return <canvas height={200} ref={canvasRef} width={200}></canvas>;
 };

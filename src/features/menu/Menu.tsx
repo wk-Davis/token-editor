@@ -20,18 +20,17 @@ const GroupHandle: React.FunctionComponent<{ title: string }> = ({
 
 interface Props {
   selectComponent: (arg: string) => void;
-  selectedComponent: string;
+  selectedComponent: string | null;
+  setColor: (color: HexStr) => void;
   state: {
-    [name: string]: {
-      color: string;
-      src: string;
-    };
+    [filename: string]: string;
   };
 }
 
 const Menu: React.FunctionComponent<Props> = ({
   selectComponent,
   selectedComponent,
+  setColor,
   state,
 }) => {
   const keys: string[] = Object.keys(state).sort();
@@ -68,7 +67,11 @@ const Menu: React.FunctionComponent<Props> = ({
                   >
                     {subName}
                     <ListItemMeta>
-                      <InputChip name={key} stateColor={state[key].color} />
+                      <InputChip
+                        name={key}
+                        stateColor={state[key]}
+                        setColor={setColor}
+                      />
                     </ListItemMeta>
                   </ListItem>
                 );
@@ -86,7 +89,11 @@ const Menu: React.FunctionComponent<Props> = ({
             >
               {name}
               <ListItemMeta>
-                <InputChip name={name} stateColor={state[name].color} />
+                <InputChip
+                  name={name}
+                  stateColor={state[name]}
+                  setColor={setColor}
+                />
               </ListItemMeta>
             </ListItem>
           );

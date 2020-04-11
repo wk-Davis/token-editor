@@ -6,7 +6,11 @@ import config from '../../assets';
 import envvars from '../../envvars';
 
 test('renders a list with all token components', () => {
-  const { getByText } = render(<Editor token='cleric' />);
+  const props = {
+    token: 'cleric',
+    unsetToken: () => {},
+  };
+  const { getByText } = render(<Editor {...props} />);
   Object.keys(config.cleric).forEach((name) => {
     const delimiterIndex = name.indexOf(envvars.REACT_APP_DELIMITER ?? '_');
     const listName = getByText(
