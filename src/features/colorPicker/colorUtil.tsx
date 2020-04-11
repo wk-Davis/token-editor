@@ -1,4 +1,5 @@
 import tinycolor from 'tinycolor2';
+import { PickerColor } from './ColorPicker';
 
 export const simpleCheckForValidColor = (data: any) => {
   const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
@@ -21,7 +22,7 @@ export const simpleCheckForValidColor = (data: any) => {
   return checked === passed ? data : false;
 };
 
-export const toState = (data: any, oldHue?: number) => {
+export const toState = (data: any, oldHue?: number): PickerColor => {
   const color =
     typeof data !== 'string' && 'hex' in data
       ? tinycolor(data.hex)
@@ -39,32 +40,12 @@ export const toState = (data: any, oldHue?: number) => {
   return {
     hsl,
     hex: transparent ? 'transparent' : `#${hex}`,
-    rgb,
     hsv,
     oldHue: data.h || oldHue || hsl.h,
-    source: data.source,
   };
 };
 
-export const isValidHex = (hex: any) => {
-  // disable hex4 and hex8
-  const lh = String(hex).charAt(0) === '#' ? 1 : 0;
-  return (
-    hex.length !== 4 + lh && hex.length < 7 + lh && tinycolor(hex).isValid()
-  );
-};
-
-export const getContrastingColor = (data: any) => {
-  if (!data) return '#fff';
-  const col = toState(data);
-  if (col.hex === 'transparent') return 'rgba(0,0,0,0.4)';
-  const yiq = (col.rgb.r * 299 + col.rgb.g * 587 + col.rgb.b * 114) / 1000;
-  return yiq >= 128 ? '#000' : '#fff';
-};
-
 export default {
-  getContrastingColor,
-  isValidHex,
   simpleCheckForValidColor,
   toState,
 };

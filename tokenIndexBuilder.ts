@@ -39,7 +39,7 @@ const path = require('path');
           configs[dirName][name] =
             name === BASE_NAME
               ? `{ color: '#000000', src: ${importName} }`
-              : `{ color: '#fff', src: ${importName} }`;
+              : `{ color: '#EEEEEE', src: ${importName} }`;
           imports.push(
             `import ${importName} from './${TOKEN_PATH.substring(
               CONFIG_PATH.length + 1

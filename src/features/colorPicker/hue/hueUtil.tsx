@@ -1,18 +1,10 @@
-export interface HSLColor {
-  h: number;
-  s: number;
-  l: number;
-  a: number;
-  source: 'rgb';
-}
+import { ColorChangeEvent } from '../ColorPicker';
 
 export const calculateChange = (
-  e:
-    | React.MouseEvent<HTMLDivElement, MouseEvent>
-    | React.TouchEvent<HTMLDivElement>,
+  e: ColorChangeEvent,
   hsl: tinycolor.ColorFormats.HSLA,
   container: HTMLDivElement
-): HSLColor | null => {
+): tinycolor.ColorFormats.HSLA | null => {
   const containerWidth = container.clientWidth;
   const x = 'pageX' in e ? e.pageX : e.touches[0].pageX;
   const left =
@@ -34,7 +26,6 @@ export const calculateChange = (
       s: hsl.s,
       l: hsl.l,
       a: hsl.a,
-      source: 'rgb',
     };
   }
 

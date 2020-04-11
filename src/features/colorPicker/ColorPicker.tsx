@@ -1,15 +1,11 @@
-import React, {
-  Dispatch,
-  StatelessComponent,
-  useEffect,
-  useState,
-} from 'react';
-import ColorWrap from './ColorWrap';
+import React, { Dispatch, useEffect, useState } from 'react';
+import tinycolor from 'tinycolor2';
+
+import * as utils from './colorUtil';
 import Hue from './hue/Hue';
 import Saturation from './saturation/Saturation';
-
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
-import getTextColor from '../common/getTextColor';
+import useDebounce from '../inputChips/useDebounce';
 
 import './ColorPicker.css';
 
@@ -17,29 +13,12 @@ export type ColorChangeEvent =
   | React.MouseEvent<HTMLDivElement, MouseEvent>
   | React.TouchEvent<HTMLDivElement>;
 
-export type ChangedColor = {
+export type PickerColor = {
   hex: HexStr;
   hsl: tinycolor.ColorFormats.HSLA;
   hsv: tinycolor.ColorFormats.HSVA;
-  rgb: tinycolor.ColorFormats.RGB;
   oldHue?: number;
-  src?: string;
 };
-
-interface PickerProps extends ChangedColor {
-  onChange: (...arg: any[]) => void;
-}
-
-const PickerComp: React.FunctionComponent<PickerProps> = (props) => {
-  return (
-    <div className='picker'>
-      <Saturation {...props} />
-      <Hue {...props} />
-    </div>
-  );
-};
-
-const Picker = ColorWrap(PickerComp as StatelessComponent);
 
 interface Props {
   selectedComponent: string;
@@ -48,31 +27,45 @@ interface Props {
 }
 
 const ColorPicker: React.FunctionComponent<Props> = ({
-  color,
+  color: stateColor,
   dispatch,
   selectedComponent,
 }) => {
   const [isOpen, setIsOpen]: [boolean, Dispatch<any>] = useState(true);
-  const [ownColor, setOwnColor]: [HexStr, Dispatch<HexStr>] = useState(color);
+  const [ownColor, setOwnColor]: [
+    PickerColor,
+    Dispatch<PickerColor>
+  ] = useState(utils.toState(stateColor));
+  const debouncedColor: string = useDebounce(ownColor.hex, 300);
+
   useEffect(() => {
-    setOwnColor(color);
-  }, [color, selectedComponent]);
+    setOwnColor(utils.toState(stateColor));
+  }, [stateColor, selectedComponent]);
 
-  const handleChange = (color: ChangedColor) => {
-    setOwnColor(color.hex);
+  const handleChange = (
+    color: tinycolor.ColorFormats.HSLA | tinycolor.ColorFormats.HSVA
+  ): void => {
+    const isValidColor: boolean = utils.simpleCheckForValidColor(color);
+    if (isValidColor) setOwnColor(utils.toState(color, color.h || ownColor.oldHue));
   };
 
-  const handleChangeComplete = (color: ChangedColor) => {
-    dispatch({ type: selectedComponent, payload: color.hex });
-  };
+  useEffect(() => {
+    if (debouncedColor)
+      dispatch({ type: selectedComponent, payload: debouncedColor });
+    // TODO: Remove selectedComponent dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedColor, dispatch]);
 
   const togglePicker = (): void => {
     setIsOpen(!isOpen);
   };
 
-  const iconColor: string = { black: '', white: 'white', gray: 'gray' }[
-    getTextColor(ownColor)
-  ];
+  const iconColor: string = tinycolor
+    .mostReadable(ownColor.hex, ['#000000', '#ffffff'], {
+      level: 'AAA',
+      size: 'small',
+    })
+    .toHex();
 
   return (
     <>
@@ -80,19 +73,24 @@ const ColorPicker: React.FunctionComponent<Props> = ({
         className='color-toggle'
         onClick={togglePicker}
         style={{
-          backgroundColor: ownColor,
+          backgroundColor: ownColor.hex,
           transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
         }}
         title={`${isOpen ? 'Hide' : 'Show'} Color Picker`}
       >
-        <img alt='arrow indicator' src={chevron_right} className={iconColor} />
+        <img
+          alt='arrow indicator'
+          src={chevron_right}
+          style={{
+            filter: `invert(${iconColor === '000000' ? '0%' : '100%'})`,
+          }}
+        />
       </button>
       {isOpen && (
-        <Picker
-          color={ownColor}
-          onChange={handleChange}
-          onChangeComplete={handleChangeComplete}
-        />
+        <div className='picker'>
+          <Saturation {...ownColor} onChange={handleChange} />
+          <Hue {...ownColor} onChange={handleChange} />
+        </div>
       )}
     </>
   );

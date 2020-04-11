@@ -1,11 +1,11 @@
-import React, { MutableRefObject, SyntheticEvent, useRef } from 'react';
-import { HSVColor, calculateChange } from './saturationHelper';
+import React, { MutableRefObject, useRef } from 'react';
 import { ColorChangeEvent } from '../ColorPicker';
+import { calculateChange } from './saturationUtil';
 
 interface Props {
   hsv: tinycolor.ColorFormats.HSVA;
   hsl: tinycolor.ColorFormats.HSLA;
-  onChange: (change: HSVColor, e: SyntheticEvent) => void;
+  onChange: (change: tinycolor.ColorFormats.HSVA, e: ColorChangeEvent) => void;
 }
 
 const Saturation: React.FunctionComponent<Props> = ({ hsv, hsl, onChange }) => {

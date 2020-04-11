@@ -33,7 +33,3 @@
 .white {
   filter: invert(100%);
 }
-
-.gray {
-  filter: invert(50%);
-}

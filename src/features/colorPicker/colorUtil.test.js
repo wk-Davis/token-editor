@@ -69,10 +69,8 @@ describe('helpers/color', () => {
       expect(color.toState('red')).toEqual({
         hsl: { a: 1, h: 0, l: 0.5, s: 1 },
         hex: '#ff0000',
-        rgb: { r: 255, g: 0, b: 0, a: 1 },
         hsv: { h: 0, s: 1, v: 1, a: 1 },
         oldHue: 0,
-        source: undefined,
       });
     });
 
@@ -92,73 +90,6 @@ describe('helpers/color', () => {
       const data = Object.assign({}, originalData);
       color.toState(data);
       expect(data).toEqual(originalData);
-    });
-  });
-
-  describe('isValidHex', () => {
-    test('allows strings of length 3 or 6', () => {
-      expect(color.isValidHex('f')).toBeFalsy();
-      expect(color.isValidHex('ff')).toBeFalsy();
-      expect(color.isValidHex('fff')).toBeTruthy();
-      expect(color.isValidHex('ffff')).toBeFalsy();
-      expect(color.isValidHex('fffff')).toBeFalsy();
-      expect(color.isValidHex('ffffff')).toBeTruthy();
-      expect(color.isValidHex('fffffff')).toBeFalsy();
-      expect(color.isValidHex('ffffffff')).toBeFalsy();
-      expect(color.isValidHex('fffffffff')).toBeFalsy();
-      expect(color.isValidHex('ffffffffff')).toBeFalsy();
-      expect(color.isValidHex('fffffffffff')).toBeFalsy();
-      expect(color.isValidHex('ffffffffffff')).toBeFalsy();
-    });
-
-    test('allows strings without leading hash', () => {
-      // Check a sample of possible colors - doing all takes too long.
-      for (let i = 0; i <= 0xffffff; i += 0x010101) {
-        const hex = `000000${i.toString(16)}`.slice(-6);
-        expect(color.isValidHex(hex)).toBeTruthy();
-      }
-    });
-
-    test('allows strings with leading hash', () => {
-      // Check a sample of possible colors - doing all takes too long.
-      for (let i = 0; i <= 0xffffff; i += 0x010101) {
-        const hex = `000000${i.toString(16)}`.slice(-6);
-        expect(color.isValidHex(`#${hex}`)).toBeTruthy();
-      }
-    });
-
-    test('is case-insensitive', () => {
-      expect(color.isValidHex('ffffff')).toBeTruthy();
-      expect(color.isValidHex('FfFffF')).toBeTruthy();
-      expect(color.isValidHex('FFFFFF')).toBeTruthy();
-    });
-
-    test('does not allow non-hex characters', () => {
-      expect(color.isValidHex('gggggg')).toBeFalsy();
-    });
-
-    test('does not allow numbers', () => {
-      expect(color.isValidHex(0xffffff)).toBeFalsy();
-    });
-  });
-
-  describe('getContrastingColor', () => {
-    test('returns a light color for a giving dark color', () => {
-      expect(color.getContrastingColor('red')).toEqual('#fff');
-    });
-
-    test('returns a dark color for a giving light color', () => {
-      expect(color.getContrastingColor('white')).toEqual('#000');
-    });
-
-    test('returns a predefined color for Transparent', () => {
-      expect(color.getContrastingColor('transparent')).toEqual(
-        'rgba(0,0,0,0.4)'
-      );
-    });
-
-    test('returns a light color as default for undefined', () => {
-      expect(color.getContrastingColor(undefined)).toEqual('#fff');
     });
   });
 });

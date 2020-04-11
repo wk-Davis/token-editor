@@ -1,10 +1,10 @@
 import React, { MutableRefObject, useRef } from 'react';
 import { ColorChangeEvent } from '../ColorPicker';
-import { HSLColor, calculateChange } from './hueHelper';
+import { calculateChange } from './hueUtil';
 
 interface Props {
   hsl: tinycolor.ColorFormats.HSLA;
-  onChange: (change: HSLColor | null, e: ColorChangeEvent) => void;
+  onChange: (change: tinycolor.ColorFormats.HSLA, e: ColorChangeEvent) => void;
 }
 
 const Hue: React.FunctionComponent<Props> = ({ hsl, onChange }) => {

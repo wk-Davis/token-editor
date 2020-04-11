@@ -1,18 +1,10 @@
-export interface HSVColor {
-  h: number;
-  s: number;
-  v: number;
-  a: number;
-  source: 'rgb';
-}
+import { ColorChangeEvent } from '../ColorPicker';
 
 export const calculateChange = (
-  e:
-    | React.MouseEvent<HTMLDivElement, MouseEvent>
-    | React.TouchEvent<HTMLDivElement>,
+  e: ColorChangeEvent,
   hsl: tinycolor.ColorFormats.HSLA,
   container: HTMLDivElement
-): HSVColor => {
+): tinycolor.ColorFormats.HSVA => {
   const {
     width: containerWidth,
     height: containerHeight,
@@ -46,6 +38,5 @@ export const calculateChange = (
     s: saturation,
     v: bright,
     a: hsl.a,
-    source: 'rgb',
   };
 };
