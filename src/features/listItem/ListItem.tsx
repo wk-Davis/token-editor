@@ -11,6 +11,7 @@ interface Props {
   selectComponent: () => void;
   selected: boolean;
   setColor: (color: HexStr) => void;
+  setPickerOpen: (arg: boolean) => void;
 }
 
 const InputListItem: React.FunctionComponent<Props> = ({
@@ -19,6 +20,7 @@ const InputListItem: React.FunctionComponent<Props> = ({
   selectComponent,
   selected,
   setColor,
+  setPickerOpen,
 }) => {
   const [ownColor, setOwnColor] = useState(color);
   const delimiterIndex: number = filename.indexOf(envvars.REACT_APP_DELIMITER);
@@ -37,6 +39,17 @@ const InputListItem: React.FunctionComponent<Props> = ({
     setColor(newVal);
   };
 
+  const handleItemClick = () => {
+    selectComponent();
+    setPickerOpen(true);
+  };
+
+  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    selectComponent();
+    setPickerOpen(false);
+  };
+
   const styles = {
     backgroundColor: tinycolor(color).toHexString(),
     color: tinycolor
@@ -48,14 +61,14 @@ const InputListItem: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <ListItem onClick={selectComponent} selected={selected} tabIndex={-1}>
+    <ListItem onClick={handleItemClick} selected={selected} tabIndex={-1}>
       {name}
       <ListItemMeta>
         <input
           className={`input-chip`}
           name={name}
           onChange={handleChange}
-          onFocus={selectComponent}
+          onFocus={handleInputFocus}
           style={styles}
           value={ownColor?.toUpperCase()}
         />

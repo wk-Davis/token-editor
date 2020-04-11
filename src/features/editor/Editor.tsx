@@ -6,9 +6,10 @@ import EditorHeader from './EditorHeader';
 import Menu from '../menu/Menu';
 import {
   TokenState,
+  getComponentNames,
   getState,
   useDebouncedCallback,
-  getComponentNames,
+  useThrottledCallback,
 } from './editorUtil';
 
 import './Editor.css';
@@ -29,6 +30,7 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
     string | null,
     Dispatch<any>
   ] = useState(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [tokenState, setTokenState]: [TokenState, Dispatch<any>] = useState(
     getState(token)
   );
@@ -39,6 +41,10 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
         [selectedComponent]: color,
       }));
   });
+  // This is throttled so the input list items can control picker/keyboard visibility
+  const setOpen = useThrottledCallback((isOpen: boolean) =>
+    setPickerOpen(isOpen)
+  );
 
   if (!token) return null;
 
@@ -52,6 +58,7 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
           selectComponent={() => selectComponent(name)}
           selected={selectedComponent === name}
           setColor={setColor}
+          setPickerOpen={setOpen}
         />
       );
       return items;
@@ -70,7 +77,9 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
           {selectedComponent && (
             <ColorPicker
               color={tokenState[selectedComponent]}
+              pickerOpen={pickerOpen}
               setColor={setColor}
+              setPickerOpen={setOpen}
             />
           )}
         </div>

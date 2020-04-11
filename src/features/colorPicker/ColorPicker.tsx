@@ -21,14 +21,17 @@ export type PickerColor = {
 
 interface Props {
   color: string;
+  pickerOpen: boolean;
   setColor: (arg: string) => void;
+  setPickerOpen: (arg: boolean) => void;
 }
 
 const ColorPicker: React.FunctionComponent<Props> = ({
   color: stateColor,
+  pickerOpen: isOpen,
   setColor,
+  setPickerOpen: setIsOpen,
 }) => {
-  const [isOpen, setIsOpen]: [boolean, Dispatch<any>] = useState(true);
   const [ownColor, setOwnColor]: [
     PickerColor,
     Dispatch<PickerColor>

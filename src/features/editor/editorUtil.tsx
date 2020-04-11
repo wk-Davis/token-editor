@@ -2,6 +2,7 @@ import { MutableRefObject, useCallback, useRef } from 'react';
 import config from '../../assets';
 
 const DEBOUNCE_RATE = 100;
+const THROTTLE_RATE = 100;
 
 export interface TokenState {
   [filename: string]: HexStr;
@@ -56,4 +57,20 @@ export function useDebouncedCallback<T extends unknown[]>(
   );
 
   return debouncedCallback;
+}
+
+export function useThrottledCallback<T extends unknown[]>(
+  callback: (...args: T) => unknown
+): (...args: T) => void {
+  const shouldWait: MutableRefObject<boolean> = useRef(false);
+
+  return function throttledCallback(...args) {
+    if (!shouldWait.current) {
+      callback(...args);
+      shouldWait.current = true;
+    }
+    setTimeout(() => {
+      shouldWait.current = false;
+    }, THROTTLE_RATE);
+  };
 }
