@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "65fef3e5a58ab063bcea7740a5051d82",
+    "revision": "45d87e14d66af0ef89655290a57df2d0",
     "url": "/token-editor/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/token-editor/static/css/2.429a8beb.chunk.css"
   },
   {
-    "revision": "6b4288016be5224e6949",
+    "revision": "480de8e663fdb71fbd36",
     "url": "/token-editor/static/css/main.8beb0bf6.chunk.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/token-editor/static/js/2.602d0b0c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6b4288016be5224e6949",
-    "url": "/token-editor/static/js/main.105aa797.chunk.js"
+    "revision": "480de8e663fdb71fbd36",
+    "url": "/token-editor/static/js/main.3517562a.chunk.js"
   },
   {
     "revision": "453d8abdc6094c9125db896f1485623b",
-    "url": "/token-editor/static/js/main.105aa797.chunk.js.LICENSE.txt"
+    "url": "/token-editor/static/js/main.3517562a.chunk.js.LICENSE.txt"
   },
   {
     "revision": "ef4264ecfcd2e749b1f3",
