@@ -9,8 +9,8 @@ import cleric_skin from './tokens/cleric/skin.png';
 import cleric_skirt from './tokens/cleric/skirt.png';
 import cleric_sleeves from './tokens/cleric/sleeves.png';
 import cleric_top from './tokens/cleric/top.png';
-import gunslinger_lineart from './tokens/gunslinger/lineart.png';
 import inquisitor_lineart from './tokens/inquisitor/lineart.png';
+import gunslinger_lineart from './tokens/gunslinger/lineart.png';
 import monk_lineart from './tokens/monk/lineart.png';
 import ranger_lineart from './tokens/ranger/lineart.png';
     

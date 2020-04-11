@@ -5,8 +5,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import tinycolor from 'tinycolor2';
 
-import getTextColor from '../common/getTextColor';
 import useDebounce from './useDebounce';
 import { EditorDispatch } from '../editor/Editor';
 
@@ -48,7 +48,12 @@ const InputChip: React.FunctionComponent<Props> = ({
 
   const styles = {
     backgroundColor: stateColor,
-    color: getTextColor(stateColor),
+    color: tinycolor
+      .mostReadable(stateColor, ['#000000', '#ffffff'], {
+        level: 'AAA',
+        size: 'small',
+      })
+      .toHexString(),
   };
 
   return (
