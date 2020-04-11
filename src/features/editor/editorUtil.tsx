@@ -29,6 +29,8 @@ export const getSources = (token: string) => {
   );
 };
 
+export const getComponentNames = (token: string) => Object.keys(config[token]);
+
 export function useDebouncedCallback<T extends unknown[]>(
   callback: (...args: T) => unknown
 ): (...args: T) => void {

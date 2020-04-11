@@ -1,12 +1,11 @@
 import React from 'react';
 import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
-import './Menu.css';
-import '@rmwc/list/styles';
-
-import InputChip from '../inputChips/InputChip';
 import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
 import envvars from '../../envvars';
+import { ListItemsIndex } from '../editor/Editor';
+
+import './Menu.css';
 
 const GroupHandle: React.FunctionComponent<{ title: string }> = ({
   title,
@@ -19,21 +18,12 @@ const GroupHandle: React.FunctionComponent<{ title: string }> = ({
 );
 
 interface Props {
-  selectComponent: (arg: string) => void;
-  selectedComponent: string | null;
-  setColor: (color: HexStr) => void;
-  state: {
-    [filename: string]: string;
-  };
+  listItems: ListItemsIndex;
+  filenames: string[];
 }
 
-const Menu: React.FunctionComponent<Props> = ({
-  selectComponent,
-  selectedComponent,
-  setColor,
-  state,
-}) => {
-  const keys: string[] = Object.keys(state).sort();
+const Menu: React.FunctionComponent<Props> = ({ listItems, filenames }) => {
+  const keys: string[] = filenames?.sort();
 
   let prevGroup: string;
   return (
@@ -56,46 +46,15 @@ const Menu: React.FunctionComponent<Props> = ({
               key={groupName}
             >
               {groupKeys.map((key) => {
-                const subName = key.substring(groupName.length + 1);
                 return (
-                  <ListItem
-                    key={key}
-                    onClick={() => {
-                      selectComponent(key);
-                    }}
-                    selected={selectedComponent === key}
-                  >
-                    {subName}
-                    <ListItemMeta>
-                      <InputChip
-                        name={key}
-                        stateColor={state[key]}
-                        setColor={setColor}
-                      />
-                    </ListItemMeta>
-                  </ListItem>
+                  <React.Fragment key={key}>{listItems[key]}</React.Fragment>
                 );
               })}
             </CollapsibleList>
           );
         } else {
           comps.push(
-            <ListItem
-              key={name}
-              onClick={() => {
-                selectComponent(name);
-              }}
-              selected={selectedComponent === name}
-            >
-              {name}
-              <ListItemMeta>
-                <InputChip
-                  name={name}
-                  stateColor={state[name]}
-                  setColor={setColor}
-                />
-              </ListItemMeta>
-            </ListItem>
+            <React.Fragment key={name}>{listItems[name]}</React.Fragment>
           );
         }
         return comps;

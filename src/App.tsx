@@ -6,6 +6,7 @@ import TokenGrid from './features/grid/Grid';
 import './App.css';
 import '@rmwc/top-app-bar/styles';
 import '@rmwc/typography/styles';
+import '@rmwc/list/styles';
 
 const App: React.FunctionComponent<{}> = () => {
   const [selectedToken, setSelectedToken]: [

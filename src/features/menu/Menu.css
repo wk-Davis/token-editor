@@ -1,4 +1,3 @@
-.mdc-list-item {
-  border-bottom: solid 1px rgba(0, 0, 0, 0.04);
-  padding: 0px 24px !important;
+.rmwc-collapsible-list__children > .rmwc-collapsible-list__children-inner {
+  padding-left: 1.5rem;
 }

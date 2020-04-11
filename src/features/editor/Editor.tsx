@@ -4,13 +4,23 @@ import Canvas from '../canvas/Canvas';
 import ColorPicker from '../colorPicker/ColorPicker';
 import EditorHeader from './EditorHeader';
 import Menu from '../menu/Menu';
-import { TokenState, getState, useDebouncedCallback } from './editorUtil';
+import {
+  TokenState,
+  getState,
+  useDebouncedCallback,
+  getComponentNames,
+} from './editorUtil';
 
 import './Editor.css';
+import InputListItem from '../listItem/ListItem';
 
 interface Props {
   token: string;
   unsetToken: () => void;
+}
+
+export interface ListItemsIndex {
+  [filename: string]: JSX.Element;
 }
 
 const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
@@ -31,6 +41,23 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
   });
 
   if (!token) return null;
+
+  const componentNames = getComponentNames(token);
+  const listItems: ListItemsIndex = componentNames.reduce(
+    (items: ListItemsIndex, name) => {
+      items[name] = (
+        <InputListItem
+          color={tokenState[name]}
+          filename={name}
+          selectComponent={() => selectComponent(name)}
+          selected={selectedComponent === name}
+          setColor={setColor}
+        />
+      );
+      return items;
+    },
+    {}
+  );
   return (
     <>
       <EditorHeader
@@ -48,12 +75,9 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
           )}
         </div>
         <div className='col-2'>
-          <Menu
-            state={tokenState}
-            selectComponent={selectComponent}
-            selectedComponent={selectedComponent}
-            setColor={setColor}
-          />
+          {componentNames && (
+            <Menu listItems={listItems} filenames={componentNames} />
+          )}
         </div>
       </div>
     </>
