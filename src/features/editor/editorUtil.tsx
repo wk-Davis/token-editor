@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback, useRef } from 'react';
 import config from '../../assets';
 
-const DEBOUNCE_RATE = 150;
+const DEBOUNCE_RATE = 100;
 
 export interface TokenState {
   [filename: string]: HexStr;

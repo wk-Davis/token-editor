@@ -48,11 +48,11 @@ const Canvas: React.FunctionComponent<Props> = ({
           sources[key],
           (img: fabric.Image) => {
             const filter = new fabric.Image.filters.BlendColor({
-              color: state[key],
+              color: key === envvars.REACT_APP_BASE ? '#000000' : '#EEEEEE',
               mode: 'tint',
               alpha: 1,
             });
-            if (Array.isArray(img.filters)) img.filters.push(filter);
+            img.filters = [filter];
             img.applyFilters();
             fabricCanvas.current?.add(img);
             if (img.name === envvars.REACT_APP_BASE)
@@ -65,6 +65,22 @@ const Canvas: React.FunctionComponent<Props> = ({
       return function clear() {
         fabricCanvas.current?.clear();
       };
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (fabricCanvas.current && token) {
+      const images: fabric.Object[] = fabricCanvas.current.getObjects('image');
+      images.forEach((img) => {
+        const filter = new fabric.Image.filters.BlendColor({
+          color: state[img.name as string],
+          mode: 'tint',
+          alpha: 1,
+        });
+        (img as fabric.Image).filters = [filter];
+        (img as fabric.Image).applyFilters();
+      });
+      fabricCanvas.current.renderAll();
     }
   }, [state, token]);
 
