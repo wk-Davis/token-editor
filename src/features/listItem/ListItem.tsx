@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { ListItem, ListItemMeta } from '@rmwc/list';
 import envvars from '../../envvars';
 import tinycolor from 'tinycolor2';
@@ -51,9 +51,9 @@ const InputListItem: React.FunctionComponent<Props> = ({
   };
 
   const styles = {
-    backgroundColor: tinycolor(color).toHexString(),
+    backgroundColor: tinycolor(ownColor).toHexString(),
     color: tinycolor
-      .mostReadable(color, ['#000000', '#ffffff'], {
+      .mostReadable(ownColor, ['#000000', '#ffffff'], {
         level: 'AAA',
         size: 'small',
       })
@@ -66,10 +66,12 @@ const InputListItem: React.FunctionComponent<Props> = ({
       <ListItemMeta>
         <input
           className={`input-chip`}
+          id={`${name}-input`}
           name={name}
           onChange={handleChange}
           onFocus={handleInputFocus}
           style={styles}
+          type='text'
           value={ownColor?.toUpperCase()}
         />
       </ListItemMeta>

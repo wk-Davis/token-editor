@@ -42,9 +42,9 @@ const Editor: React.FunctionComponent<Props> = ({ token, unsetToken }) => {
       }));
   });
   // This is throttled so the input list items can control picker/keyboard visibility
-  const setOpen = useThrottledCallback((isOpen: boolean) =>
-    setPickerOpen(isOpen)
-  );
+  const setOpen = useThrottledCallback((isOpen: boolean) => {
+    setPickerOpen(isOpen);
+  });
 
   if (!token) return null;
 

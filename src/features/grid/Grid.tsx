@@ -16,7 +16,7 @@ import './Grid.css';
 import '@rmwc/image-list/styles';
 
 const Grid: React.FunctionComponent<{
-  setToken: (arg: string) => any;
+  setToken: (arg: string) => void;
 }> = ({ setToken }) => {
   const tokenNames: string[] = Object.keys(config);
   return (

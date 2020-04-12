@@ -2,8 +2,17 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import Canvas from './Canvas';
-import config from '../../assets';
+import { getState } from '../editor/editorUtil';
 
-test('renders without error', () => {
-  render(<Canvas canvas={{ current: null }} state={config.cleric} />);
+describe('Canvas', () => {
+  test('renders canvas element without error', () => {
+  const props = {
+    state: getState('cleric'),
+    saveCanvas: { current: () => {} },
+    token: 'cleric',
+  };
+  const { container } = render(<Canvas {...props} />);
+  expect(container).toContainHTML('canvas');
 });
+})
+
