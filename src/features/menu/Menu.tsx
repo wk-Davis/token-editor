@@ -1,7 +1,7 @@
 import React from 'react';
 import { CollapsibleList, List, ListItem, ListItemMeta } from '@rmwc/list';
 
-import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
+import chevron_right from '../../assets/icons/chevron_right-18dp.svg';
 import envvars from '../../envvars';
 import { ListItemsIndex } from '../editor/Editor';
 

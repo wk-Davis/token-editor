@@ -48,7 +48,7 @@ describe('Editor', () => {
       fireEvent.change(firstInput, {
         target: { value: testColor.toHexString() },
       });
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 150));
       expect(pickerToggle).toHaveStyle(
         `background-color: ${testColor.toRgbString()}`
       );

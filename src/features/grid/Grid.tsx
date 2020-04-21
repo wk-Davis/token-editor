@@ -1,4 +1,5 @@
 import React from 'react';
+import { Ripple } from '@rmwc/ripple';
 import {
   ImageList,
   ImageListImage,
@@ -30,7 +31,7 @@ const Grid: React.FunctionComponent<{
           {tokenNames.map((ref: string) => {
             const isAvailable: boolean = ref === 'cleric';
             const src: string = config[ref][envvars.REACT_APP_BASE].src;
-            return (
+            const item = (
               <ImageListItem
                 className={isAvailable ? '' : 'no-hover'}
                 key={ref}
@@ -46,6 +47,7 @@ const Grid: React.FunctionComponent<{
                 )}
               </ImageListItem>
             );
+            return isAvailable ? <Ripple key={ref}>{item}</Ripple> : item;
           })}
         </ImageList>
       </div>

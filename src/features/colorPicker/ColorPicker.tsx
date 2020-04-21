@@ -4,7 +4,7 @@ import tinycolor from 'tinycolor2';
 import * as utils from './colorUtil';
 import Hue from './hue/Hue';
 import Saturation from './saturation/Saturation';
-import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
+import chevron_right from '../../assets/icons/chevron_right-18dp.svg';
 
 import './ColorPicker.css';
 

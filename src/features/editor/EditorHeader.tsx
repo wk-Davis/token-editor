@@ -1,4 +1,5 @@
 import React from 'react';
+import { Ripple } from '@rmwc/ripple';
 import {
   TopAppBar,
   TopAppBarActionItem,
@@ -9,8 +10,8 @@ import {
   TopAppBarTitle,
 } from '@rmwc/top-app-bar';
 
-import chevron_right from '../../assets/icons/chevron_right-black-18dp.svg';
-import save_icon from '../../assets/icons/save_alt-black-18dp.svg';
+import chevronRight from '../../assets/icons/chevron_right-18dp';
+import saveIcon from '../../assets/icons/save_alt-18dp';
 
 const EditorHeader: React.FunctionComponent<{
   saveCanvas: () => void;
@@ -22,16 +23,27 @@ const EditorHeader: React.FunctionComponent<{
         <TopAppBarRow>
           <TopAppBarSection>
             <TopAppBarNavigationIcon
-              icon={chevron_right}
-              className={`flipx white`}
+              icon={{
+                strategy: 'component',
+                icon: (
+                  <Ripple>{chevronRight('--mdc-theme-text-on-primary')}</Ripple>
+                ),
+              }}
+              className={`flipx`}
               onClick={unsetToken}
             />
             <TopAppBarTitle>Token Editor</TopAppBarTitle>
           </TopAppBarSection>
           <TopAppBarSection alignEnd>
             <TopAppBarActionItem
-              className='white'
-              icon={save_icon}
+              icon={{
+                strategy: 'component',
+                icon: (
+                  <Ripple accent>
+                    {saveIcon('--mdc-theme-text-on-primary')}
+                  </Ripple>
+                ),
+              }}
               onClick={saveCanvas}
               title='Save'
             />
