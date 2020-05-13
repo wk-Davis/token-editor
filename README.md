@@ -8,14 +8,16 @@ A custom, character token maker for virtual tabletops. See the [live demo.](http
 
 ## Installation
 
+You'll need to have [Node](https://nodejs.org/en/), npm or [yarn](https://yarnpkg.com/) on your machine. All yarn commands can be substituted with npm.
 Enter the following into your command line. Then navigate to https://localhost:3000/ to see the app.
 ```sh
 git clone https://github.com/wk-Davis/token-editor.git
-npm install
-npm start
+cd token-editor
+yarn
+yarn start
 ```
 Out of the box, it will attempt to open an incognito Chromium browser.
-To change this, open the [.env](https://github.com/wk-Davis/token-editor/blob/master/.env) file and modify the `BROWSER` and `BROWSER_ARGS` variables. Or delete both values, and it will default to opening a new Chrome window on `npm start`.
+To change this, open the [.env](https://github.com/wk-Davis/token-editor/blob/master/.env) file and modify the `BROWSER` and `BROWSER_ARGS` variables. Or delete both values, and it will default to opening a new Chrome window on `yarn start`.
 ```sh
 ...
 REACT_APP_TOKEN_PATH=src/assets/tokens
