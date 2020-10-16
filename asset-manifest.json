@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/token-editor/static/css/main.3940d9d0.chunk.css",
-    "main.js": "/token-editor/static/js/main.39fa4b52.chunk.js",
-    "main.js.map": "/token-editor/static/js/main.39fa4b52.chunk.js.map",
-    "runtime-main.js": "/token-editor/static/js/runtime-main.f9256278.js",
-    "runtime-main.js.map": "/token-editor/static/js/runtime-main.f9256278.js.map",
-    "static/css/2.0ef18816.chunk.css": "/token-editor/static/css/2.0ef18816.chunk.css",
-    "static/js/2.77d0ed48.chunk.js": "/token-editor/static/js/2.77d0ed48.chunk.js",
-    "static/js/2.77d0ed48.chunk.js.map": "/token-editor/static/js/2.77d0ed48.chunk.js.map",
+    "main.css": "/token-editor/static/css/main.bf58fbb9.chunk.css",
+    "main.js": "/token-editor/static/js/main.8a8f951a.chunk.js",
+    "main.js.map": "/token-editor/static/js/main.8a8f951a.chunk.js.map",
+    "runtime-main.js": "/token-editor/static/js/runtime-main.3905a775.js",
+    "runtime-main.js.map": "/token-editor/static/js/runtime-main.3905a775.js.map",
+    "static/css/2.008f965c.chunk.css": "/token-editor/static/css/2.008f965c.chunk.css",
+    "static/js/2.906bc96e.chunk.js": "/token-editor/static/js/2.906bc96e.chunk.js",
+    "static/js/2.906bc96e.chunk.js.map": "/token-editor/static/js/2.906bc96e.chunk.js.map",
     "index.html": "/token-editor/index.html",
-    "precache-manifest.4f53eb55ae2cee62d7dec2af1bab2440.js": "/token-editor/precache-manifest.4f53eb55ae2cee62d7dec2af1bab2440.js",
+    "precache-manifest.b6118ee743d045be50b7b9fb07275ab3.js": "/token-editor/precache-manifest.b6118ee743d045be50b7b9fb07275ab3.js",
     "service-worker.js": "/token-editor/service-worker.js",
-    "static/css/2.0ef18816.chunk.css.map": "/token-editor/static/css/2.0ef18816.chunk.css.map",
-    "static/css/main.3940d9d0.chunk.css.map": "/token-editor/static/css/main.3940d9d0.chunk.css.map",
-    "static/js/2.77d0ed48.chunk.js.LICENSE.txt": "/token-editor/static/js/2.77d0ed48.chunk.js.LICENSE.txt",
-    "static/js/main.39fa4b52.chunk.js.LICENSE.txt": "/token-editor/static/js/main.39fa4b52.chunk.js.LICENSE.txt",
+    "static/css/2.008f965c.chunk.css.map": "/token-editor/static/css/2.008f965c.chunk.css.map",
+    "static/css/main.bf58fbb9.chunk.css.map": "/token-editor/static/css/main.bf58fbb9.chunk.css.map",
+    "static/js/2.906bc96e.chunk.js.LICENSE.txt": "/token-editor/static/js/2.906bc96e.chunk.js.LICENSE.txt",
+    "static/js/main.8a8f951a.chunk.js.LICENSE.txt": "/token-editor/static/js/main.8a8f951a.chunk.js.LICENSE.txt",
     "static/media/chevron_right-18dp.svg": "/token-editor/static/media/chevron_right-18dp.9f30b281.svg",
     "static/media/lineart.png": "/token-editor/static/media/lineart.c35fe11b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f9256278.js",
-    "static/css/2.0ef18816.chunk.css",
-    "static/js/2.77d0ed48.chunk.js",
-    "static/css/main.3940d9d0.chunk.css",
-    "static/js/main.39fa4b52.chunk.js"
+    "static/js/runtime-main.3905a775.js",
+    "static/css/2.008f965c.chunk.css",
+    "static/js/2.906bc96e.chunk.js",
+    "static/css/main.bf58fbb9.chunk.css",
+    "static/js/main.8a8f951a.chunk.js"
   ]
 }
